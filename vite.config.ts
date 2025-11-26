@@ -1,6 +1,10 @@
-// vite.config.ts
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/planner-fit/',   // your GitHub repo name with trailing slash
+  // must match the repo name
+  base: '/planner-fit/',
+  build: {
+    // Vite will output the built site here
+    outDir: 'docs',
+  },
 });
