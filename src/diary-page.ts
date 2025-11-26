@@ -1,53 +1,86 @@
 // src/diary-page.ts
 import { LitElement, html, css } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-import { DiaryEntry, INITIAL_DIARY, Mood } from './models';
+import { DiaryEntry, Mood, INITIAL_DIARY } from './models';
 
 @customElement('diary-page')
 export class DiaryPage extends LitElement {
-  @state() private diaryEntries: DiaryEntry[] = INITIAL_DIARY;
+  @state() private diaryEntries: DiaryEntry[] = [...INITIAL_DIARY];
   @state() private newMood: Mood = 'Good';
   @state() private newDiaryText = '';
+  @state() private showNewEntryForm = false;
 
   static styles = css`
     :host {
       display: block;
+      color: #020617;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+        'Segoe UI', sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
     }
 
     .card-gradient {
       border-radius: 24px;
-      padding: 14px 16px;
+      padding: 18px 18px;
       color: #fff;
       background: linear-gradient(90deg, #fb7185, #ec4899, #a855f7);
-      box-shadow: 0 16px 40px rgba(248, 113, 113, 0.4);
+      box-shadow: 0 16px 40px rgba(236, 72, 153, 0.4);
       margin-top: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
     }
 
-    .card-white,
-    .section {
-      margin-top: 10px;
+    .card-gradient-main-title {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .card-gradient-sub {
+      font-size: 11px;
+      color: #fee2e2;
+      margin-top: 4px;
+    }
+
+    .new-entry-btn {
+      border-radius: 999px;
+      border: none;
+      background: #ec4899;
+      background-image: linear-gradient(90deg, #f97316, #ec4899);
+      color: #ffffff;
+      padding: 8px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(248, 113, 113, 0.6);
+      white-space: nowrap;
+    }
+
+    .new-entry-btn span:first-child {
+      font-size: 14px;
+    }
+
+    .card-white {
+      margin-top: 12px;
       border-radius: 24px;
       background: #ffffff;
       padding: 16px;
       box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
     }
 
-    .section-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: #0f172a;
-    }
-
-    .section-sub {
-      font-size: 11px;
-      color: #6b7280;
-    }
-
     .stat-chip-row {
       display: grid;
       grid-template-columns: 1fr;
       gap: 8px;
-      margin-top: 10px;
     }
 
     @media (min-width: 640px) {
@@ -87,11 +120,51 @@ export class DiaryPage extends LitElement {
       color: #111827;
     }
 
+    .section {
+      margin-top: 12px;
+      border-radius: 24px;
+      background: #ffffff;
+      padding: 16px;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .section-sub {
+      font-size: 11px;
+      color: #6b7280;
+    }
+
+    .new-entry-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .cancel-chip {
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      padding: 6px 14px;
+      font-size: 11px;
+      color: #4b5563;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
     .mood-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 8px;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     @media (min-width: 640px) {
@@ -111,6 +184,8 @@ export class DiaryPage extends LitElement {
       align-items: center;
       gap: 4px;
       cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease,
+        box-shadow 0.15s ease;
     }
 
     .mood-btn.active {
@@ -123,28 +198,29 @@ export class DiaryPage extends LitElement {
       font-size: 18px;
     }
 
-    textarea.diary-input {
-      margin-top: 8px;
+    .diary-input {
+      margin-top: 10px;
       width: 100%;
-      min-height: 90px;
+      min-height: 120px;
       border-radius: 18px;
       border: 1px solid #e5e7eb;
       background: #f9fafb;
-      padding: 8px 10px;
+      padding: 12px 14px;
       font-size: 12px;
       font-family: inherit;
       resize: vertical;
       color: #111827;
     }
 
-    textarea.diary-input:focus {
+    .diary-input:focus {
       outline: none;
       border-color: #fb7185;
       background: #ffffff;
+      box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.4);
     }
 
     .save-btn {
-      margin-top: 10px;
+      margin-top: 12px;
       width: 100%;
       border-radius: 999px;
       border: none;
@@ -152,7 +228,7 @@ export class DiaryPage extends LitElement {
       color: #ffffff;
       font-size: 12px;
       font-weight: 600;
-      padding: 8px;
+      padding: 9px;
       cursor: pointer;
       box-shadow: 0 12px 28px rgba(236, 72, 153, 0.4);
     }
@@ -193,11 +269,36 @@ export class DiaryPage extends LitElement {
       font-size: 12px;
       color: #374151;
     }
+
+    .diary-entry-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: #fb7185;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      margin-right: 6px;
+    }
   `;
 
-  private get greatDays(): number {
-    return this.diaryEntries.filter((d) => d.mood === 'Great').length;
+  /* ---------- derived stats ---------- */
+
+  private get totalEntries() {
+    return this.diaryEntries.length;
   }
+
+  private get greatDays() {
+    return this.diaryEntries.filter((e) => e.mood === 'Great').length;
+  }
+
+  // simple prototype: just count all entries as "this week"
+  private get thisWeek() {
+    return this.diaryEntries.length;
+  }
+
+  /* ---------- handlers ---------- */
 
   private setMood(mood: Mood) {
     this.newMood = mood;
@@ -205,6 +306,18 @@ export class DiaryPage extends LitElement {
 
   private onDiaryInput(e: Event) {
     this.newDiaryText = (e.target as HTMLTextAreaElement).value;
+  }
+
+  private startNewEntry() {
+    this.showNewEntryForm = true;
+    this.newMood = 'Good';
+    this.newDiaryText = '';
+  }
+
+  private cancelNewEntry() {
+    this.showNewEntryForm = false;
+    this.newMood = 'Good';
+    this.newDiaryText = '';
   }
 
   private saveDiary(e: Event) {
@@ -226,8 +339,92 @@ export class DiaryPage extends LitElement {
     };
 
     this.diaryEntries = [entry, ...this.diaryEntries];
-    this.newDiaryText = '';
-    this.newMood = 'Good';
+    this.cancelNewEntry();
+  }
+
+  /* ---------- render ---------- */
+
+  render() {
+    const todayLabel = new Date().toLocaleDateString(undefined, {
+      weekday: 'long',
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    });
+
+    return html`
+      <!-- Header -->
+      <section class="card-gradient">
+        <div>
+          <div class="card-gradient-main-title">Diary</div>
+          <div class="card-gradient-sub">Reflect on your fitness journey.</div>
+        </div>
+        <button class="new-entry-btn" @click=${this.startNewEntry}>
+          <span>＋</span>
+          <span>New Entry</span>
+        </button>
+      </section>
+
+      <!-- Stats -->
+      <section class="card-white">
+        <div class="stat-chip-row">
+          ${this.renderStatChip('Total Entries', this.totalEntries, '💗')}
+          ${this.renderStatChip('Great Days', this.greatDays, '😊')}
+          ${this.renderStatChip('This Week', this.thisWeek, '💜')}
+        </div>
+      </section>
+
+      <!-- New entry card -->
+      ${this.showNewEntryForm
+        ? html`
+            <section class="section">
+              <div class="new-entry-header">
+                <div style="display:flex;align-items:center;gap:8px;">
+                  <div class="diary-entry-icon">💗</div>
+                  <div>
+                    <div class="section-title">New Diary Entry</div>
+                    <div class="section-sub">${todayLabel}</div>
+                  </div>
+                </div>
+                <button class="cancel-chip" @click=${this.cancelNewEntry}>
+                  ✕ Cancel
+                </button>
+              </div>
+
+              <div style="margin-top:14px;">
+                <div class="section-title" style="font-size:12px;">
+                  How are you feeling?
+                </div>
+                <div class="mood-grid">
+                  ${this.renderMoodButton('Great', '😄')}
+                  ${this.renderMoodButton('Good', '🙂')}
+                  ${this.renderMoodButton('Okay', '😐')}
+                  ${this.renderMoodButton('Tough', '😵‍💫')}
+                </div>
+              </div>
+
+              <div style="margin-top:14px;">
+                <div class="section-title" style="font-size:12px;">
+                  Your Thoughts &amp; Feelings
+                </div>
+                <textarea
+                  class="diary-input"
+                  .value=${this.newDiaryText}
+                  @input=${this.onDiaryInput}
+                  placeholder="How did you feel during and after your workout? What’s on your mind?"
+                ></textarea>
+              </div>
+
+              <button class="save-btn" @click=${this.saveDiary}>
+                Save Entry
+              </button>
+            </section>
+          `
+        : null}
+
+      <!-- Existing entries -->
+      ${this.diaryEntries.map((entry) => this.renderDiaryEntry(entry))}
+    `;
   }
 
   private renderStatChip(label: string, value: number, icon: string) {
@@ -270,108 +467,13 @@ export class DiaryPage extends LitElement {
       <section class="diary-entry-card">
         <div class="diary-entry-header">
           <div style="display:flex;align-items:center;gap:8px;">
-            <div
-              style="
-                width:30px;height:30px;border-radius:999px;
-                background:#fb7185;
-                display:flex;align-items:center;justify-content:center;
-                color:#fff;
-              "
-            >
-              💗
-            </div>
+            <div class="diary-entry-icon">💗</div>
             <div class="diary-entry-date">${entry.dateLabel}</div>
           </div>
           <div class="diary-entry-mood">${moodEmoji} ${entry.mood}</div>
         </div>
         <div class="diary-entry-text">${entry.text}</div>
       </section>
-    `;
-  }
-
-  render() {
-    const todayLabel = new Date().toLocaleDateString(undefined, {
-      weekday: 'long',
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    });
-
-    return html`
-      <section class="card-gradient">
-        <div style="font-size:15px;font-weight:600;">Diary</div>
-        <div style="margin-top:4px;font-size:11px;color:#fee2e2;">
-          Reflect on your fitness journey.
-        </div>
-      </section>
-
-      <section class="card-white">
-        <div class="stat-chip-row">
-          ${this.renderStatChip('Total Entries', this.diaryEntries.length, '💗')}
-          ${this.renderStatChip('Great Days', this.greatDays, '😊')}
-          ${this.renderStatChip('This Week', 2, '💜')}
-        </div>
-      </section>
-
-      <section class="section">
-        <div
-          style="display:flex;align-items:center;justify-content:space-between;gap:8px;"
-        >
-          <div style="display:flex;align-items:center;gap:8px;">
-            <div
-              style="
-                width:32px;height:32px;border-radius:999px;
-                background:#fb7185;
-                display:flex;align-items:center;justify-content:center;
-                color:#fff;
-              "
-            >
-              💗
-            </div>
-            <div>
-              <div class="section-title">New Diary Entry</div>
-              <div class="section-sub">${todayLabel}</div>
-            </div>
-          </div>
-          <div
-            style="
-              font-size:11px;
-              padding:4px 10px;
-              border-radius:999px;
-              background:#f3f4f6;
-              color:#6b7280;
-            "
-          >
-            Cancel
-          </div>
-        </div>
-
-        <div style="margin-top:12px;">
-          <div class="section-title" style="font-size:12px;">How are you feeling?</div>
-          <div class="mood-grid">
-            ${this.renderMoodButton('Great', '😄')}
-            ${this.renderMoodButton('Good', '🙂')}
-            ${this.renderMoodButton('Okay', '😐')}
-            ${this.renderMoodButton('Tough', '😵‍💫')}
-          </div>
-        </div>
-
-        <div style="margin-top:12px;">
-          <div class="section-title" style="font-size:12px;">
-            Your Thoughts &amp; Feelings
-          </div>
-          <textarea
-            class="diary-input"
-            .value=${this.newDiaryText}
-            @input=${this.onDiaryInput}
-            placeholder="How did you feel during and after your workout? What’s on your mind?"
-          ></textarea>
-        </div>
-
-        <button class="save-btn" @click=${this.saveDiary}>Save Entry</button>
-      </section>
-
-      ${this.diaryEntries.map((entry) => this.renderDiaryEntry(entry))}
     `;
   }
 }
