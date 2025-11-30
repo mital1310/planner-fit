@@ -2,21 +2,21 @@
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const q=globalThis,se=q.ShadowRoot&&(q.ShadyCSS===void 0||q.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,ye=Symbol(),oe=new WeakMap;let Ce=class{constructor(e,t,s){if(this._$cssResult$=!0,s!==ye)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(se&&e===void 0){const s=t!==void 0&&t.length===1;s&&(e=oe.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),s&&oe.set(t,e))}return e}toString(){return this.cssText}};const M=n=>new Ce(typeof n=="string"?n:n+"",void 0,ye),De=(n,e)=>{if(se)n.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const t of e){const s=document.createElement("style"),i=q.litNonce;i!==void 0&&s.setAttribute("nonce",i),s.textContent=t.cssText,n.appendChild(s)}},de=se?n=>n:n=>n instanceof CSSStyleSheet?(e=>{let t="";for(const s of e.cssRules)t+=s.cssText;return M(t)})(n):n;/**
+ */const V=globalThis,se=V.ShadowRoot&&(V.ShadyCSS===void 0||V.ShadyCSS.nativeShadow)&&"adoptedStyleSheets"in Document.prototype&&"replace"in CSSStyleSheet.prototype,ye=Symbol(),oe=new WeakMap;let Ce=class{constructor(e,t,s){if(this._$cssResult$=!0,s!==ye)throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");this.cssText=e,this.t=t}get styleSheet(){let e=this.o;const t=this.t;if(se&&e===void 0){const s=t!==void 0&&t.length===1;s&&(e=oe.get(t)),e===void 0&&((this.o=e=new CSSStyleSheet).replaceSync(this.cssText),s&&oe.set(t,e))}return e}toString(){return this.cssText}};const N=n=>new Ce(typeof n=="string"?n:n+"",void 0,ye),Pe=(n,e)=>{if(se)n.adoptedStyleSheets=e.map(t=>t instanceof CSSStyleSheet?t:t.styleSheet);else for(const t of e){const s=document.createElement("style"),i=V.litNonce;i!==void 0&&s.setAttribute("nonce",i),s.textContent=t.cssText,n.appendChild(s)}},le=se?n=>n:n=>n instanceof CSSStyleSheet?(e=>{let t="";for(const s of e.cssRules)t+=s.cssText;return N(t)})(n):n;/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const{is:Pe,defineProperty:ze,getOwnPropertyDescriptor:Me,getOwnPropertyNames:Ne,getOwnPropertySymbols:Te,getPrototypeOf:Ie}=Object,S=globalThis,le=S.trustedTypes,Oe=le?le.emptyScript:"",ee=S.reactiveElementPolyfillSupport,H=(n,e)=>n,K={toAttribute(n,e){switch(e){case Boolean:n=n?Oe:null;break;case Object:case Array:n=n==null?n:JSON.stringify(n)}return n},fromAttribute(n,e){let t=n;switch(e){case Boolean:t=n!==null;break;case Number:t=n===null?null:Number(n);break;case Object:case Array:try{t=JSON.parse(n)}catch{t=null}}return t}},re=(n,e)=>!Pe(n,e),ce={attribute:!0,type:String,converter:K,reflect:!1,useDefault:!1,hasChanged:re};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),S.litPropertyMetadata??(S.litPropertyMetadata=new WeakMap);let N=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??(this.l=[])).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=ce){if(t.state&&(t.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(e)&&((t=Object.create(t)).wrapped=!0),this.elementProperties.set(e,t),!t.noAccessor){const s=Symbol(),i=this.getPropertyDescriptor(e,s,t);i!==void 0&&ze(this.prototype,e,i)}}static getPropertyDescriptor(e,t,s){const{get:i,set:r}=Me(this.prototype,e)??{get(){return this[t]},set(a){this[t]=a}};return{get:i,set(a){const l=i==null?void 0:i.call(this);r==null||r.call(this,a),this.requestUpdate(e,l,s)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??ce}static _$Ei(){if(this.hasOwnProperty(H("elementProperties")))return;const e=Ie(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(H("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(H("properties"))){const t=this.properties,s=[...Ne(t),...Te(t)];for(const i of s)this.createProperty(i,t[i])}const e=this[Symbol.metadata];if(e!==null){const t=litPropertyMetadata.get(e);if(t!==void 0)for(const[s,i]of t)this.elementProperties.set(s,i)}this._$Eh=new Map;for(const[t,s]of this.elementProperties){const i=this._$Eu(t,s);i!==void 0&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const s=new Set(e.flat(1/0).reverse());for(const i of s)t.unshift(de(i))}else e!==void 0&&t.push(de(e));return t}static _$Eu(e,t){const s=t.attribute;return s===!1?void 0:typeof s=="string"?s:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){var e;this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),(e=this.constructor.l)==null||e.forEach(t=>t(this))}addController(e){var t;(this._$EO??(this._$EO=new Set)).add(e),this.renderRoot!==void 0&&this.isConnected&&((t=e.hostConnected)==null||t.call(e))}removeController(e){var t;(t=this._$EO)==null||t.delete(e)}_$E_(){const e=new Map,t=this.constructor.elementProperties;for(const s of t.keys())this.hasOwnProperty(s)&&(e.set(s,this[s]),delete this[s]);e.size>0&&(this._$Ep=e)}createRenderRoot(){const e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return De(e,this.constructor.elementStyles),e}connectedCallback(){var e;this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostConnected)==null?void 0:s.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostDisconnected)==null?void 0:s.call(t)})}attributeChangedCallback(e,t,s){this._$AK(e,s)}_$ET(e,t){var r;const s=this.constructor.elementProperties.get(e),i=this.constructor._$Eu(e,s);if(i!==void 0&&s.reflect===!0){const a=(((r=s.converter)==null?void 0:r.toAttribute)!==void 0?s.converter:K).toAttribute(t,s.type);this._$Em=e,a==null?this.removeAttribute(i):this.setAttribute(i,a),this._$Em=null}}_$AK(e,t){var r,a;const s=this.constructor,i=s._$Eh.get(e);if(i!==void 0&&this._$Em!==i){const l=s.getPropertyOptions(i),o=typeof l.converter=="function"?{fromAttribute:l.converter}:((r=l.converter)==null?void 0:r.fromAttribute)!==void 0?l.converter:K;this._$Em=i;const p=o.fromAttribute(t,l.type);this[i]=p??((a=this._$Ej)==null?void 0:a.get(i))??p,this._$Em=null}}requestUpdate(e,t,s){var i;if(e!==void 0){const r=this.constructor,a=this[e];if(s??(s=r.getPropertyOptions(e)),!((s.hasChanged??re)(a,t)||s.useDefault&&s.reflect&&a===((i=this._$Ej)==null?void 0:i.get(e))&&!this.hasAttribute(r._$Eu(e,s))))return;this.C(e,t,s)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(e,t,{useDefault:s,reflect:i,wrapped:r},a){s&&!(this._$Ej??(this._$Ej=new Map)).has(e)&&(this._$Ej.set(e,a??t??this[e]),r!==!0||a!==void 0)||(this._$AL.has(e)||(this.hasUpdated||s||(t=void 0),this._$AL.set(e,t)),i===!0&&this._$Em!==e&&(this._$Eq??(this._$Eq=new Set)).add(e))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var s;if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[r,a]of this._$Ep)this[r]=a;this._$Ep=void 0}const i=this.constructor.elementProperties;if(i.size>0)for(const[r,a]of i){const{wrapped:l}=a,o=this[r];l!==!0||this._$AL.has(r)||o===void 0||this.C(r,void 0,a,o)}}let e=!1;const t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),(s=this._$EO)==null||s.forEach(i=>{var r;return(r=i.hostUpdate)==null?void 0:r.call(i)}),this.update(t)):this._$EM()}catch(i){throw e=!1,this._$EM(),i}e&&this._$AE(t)}willUpdate(e){}_$AE(e){var t;(t=this._$EO)==null||t.forEach(s=>{var i;return(i=s.hostUpdated)==null?void 0:i.call(s)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Eq&&(this._$Eq=this._$Eq.forEach(t=>this._$ET(t,this[t]))),this._$EM()}updated(e){}firstUpdated(e){}};N.elementStyles=[],N.shadowRootOptions={mode:"open"},N[H("elementProperties")]=new Map,N[H("finalized")]=new Map,ee==null||ee({ReactiveElement:N}),(S.reactiveElementVersions??(S.reactiveElementVersions=[])).push("2.1.1");/**
+ */const{is:Me,defineProperty:Ne,getOwnPropertyDescriptor:Ie,getOwnPropertyNames:ze,getOwnPropertySymbols:Te,getPrototypeOf:Oe}=Object,A=globalThis,de=A.trustedTypes,Le=de?de.emptyScript:"",Q=A.reactiveElementPolyfillSupport,W=(n,e)=>n,q={toAttribute(n,e){switch(e){case Boolean:n=n?Le:null;break;case Object:case Array:n=n==null?n:JSON.stringify(n)}return n},fromAttribute(n,e){let t=n;switch(e){case Boolean:t=n!==null;break;case Number:t=n===null?null:Number(n);break;case Object:case Array:try{t=JSON.parse(n)}catch{t=null}}return t}},re=(n,e)=>!Me(n,e),ce={attribute:!0,type:String,converter:q,reflect:!1,useDefault:!1,hasChanged:re};Symbol.metadata??(Symbol.metadata=Symbol("metadata")),A.litPropertyMetadata??(A.litPropertyMetadata=new WeakMap);let I=class extends HTMLElement{static addInitializer(e){this._$Ei(),(this.l??(this.l=[])).push(e)}static get observedAttributes(){return this.finalize(),this._$Eh&&[...this._$Eh.keys()]}static createProperty(e,t=ce){if(t.state&&(t.attribute=!1),this._$Ei(),this.prototype.hasOwnProperty(e)&&((t=Object.create(t)).wrapped=!0),this.elementProperties.set(e,t),!t.noAccessor){const s=Symbol(),i=this.getPropertyDescriptor(e,s,t);i!==void 0&&Ne(this.prototype,e,i)}}static getPropertyDescriptor(e,t,s){const{get:i,set:r}=Ie(this.prototype,e)??{get(){return this[t]},set(a){this[t]=a}};return{get:i,set(a){const d=i==null?void 0:i.call(this);r==null||r.call(this,a),this.requestUpdate(e,d,s)},configurable:!0,enumerable:!0}}static getPropertyOptions(e){return this.elementProperties.get(e)??ce}static _$Ei(){if(this.hasOwnProperty(W("elementProperties")))return;const e=Oe(this);e.finalize(),e.l!==void 0&&(this.l=[...e.l]),this.elementProperties=new Map(e.elementProperties)}static finalize(){if(this.hasOwnProperty(W("finalized")))return;if(this.finalized=!0,this._$Ei(),this.hasOwnProperty(W("properties"))){const t=this.properties,s=[...ze(t),...Te(t)];for(const i of s)this.createProperty(i,t[i])}const e=this[Symbol.metadata];if(e!==null){const t=litPropertyMetadata.get(e);if(t!==void 0)for(const[s,i]of t)this.elementProperties.set(s,i)}this._$Eh=new Map;for(const[t,s]of this.elementProperties){const i=this._$Eu(t,s);i!==void 0&&this._$Eh.set(i,t)}this.elementStyles=this.finalizeStyles(this.styles)}static finalizeStyles(e){const t=[];if(Array.isArray(e)){const s=new Set(e.flat(1/0).reverse());for(const i of s)t.unshift(le(i))}else e!==void 0&&t.push(le(e));return t}static _$Eu(e,t){const s=t.attribute;return s===!1?void 0:typeof s=="string"?s:typeof e=="string"?e.toLowerCase():void 0}constructor(){super(),this._$Ep=void 0,this.isUpdatePending=!1,this.hasUpdated=!1,this._$Em=null,this._$Ev()}_$Ev(){var e;this._$ES=new Promise(t=>this.enableUpdating=t),this._$AL=new Map,this._$E_(),this.requestUpdate(),(e=this.constructor.l)==null||e.forEach(t=>t(this))}addController(e){var t;(this._$EO??(this._$EO=new Set)).add(e),this.renderRoot!==void 0&&this.isConnected&&((t=e.hostConnected)==null||t.call(e))}removeController(e){var t;(t=this._$EO)==null||t.delete(e)}_$E_(){const e=new Map,t=this.constructor.elementProperties;for(const s of t.keys())this.hasOwnProperty(s)&&(e.set(s,this[s]),delete this[s]);e.size>0&&(this._$Ep=e)}createRenderRoot(){const e=this.shadowRoot??this.attachShadow(this.constructor.shadowRootOptions);return Pe(e,this.constructor.elementStyles),e}connectedCallback(){var e;this.renderRoot??(this.renderRoot=this.createRenderRoot()),this.enableUpdating(!0),(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostConnected)==null?void 0:s.call(t)})}enableUpdating(e){}disconnectedCallback(){var e;(e=this._$EO)==null||e.forEach(t=>{var s;return(s=t.hostDisconnected)==null?void 0:s.call(t)})}attributeChangedCallback(e,t,s){this._$AK(e,s)}_$ET(e,t){var r;const s=this.constructor.elementProperties.get(e),i=this.constructor._$Eu(e,s);if(i!==void 0&&s.reflect===!0){const a=(((r=s.converter)==null?void 0:r.toAttribute)!==void 0?s.converter:q).toAttribute(t,s.type);this._$Em=e,a==null?this.removeAttribute(i):this.setAttribute(i,a),this._$Em=null}}_$AK(e,t){var r,a;const s=this.constructor,i=s._$Eh.get(e);if(i!==void 0&&this._$Em!==i){const d=s.getPropertyOptions(i),o=typeof d.converter=="function"?{fromAttribute:d.converter}:((r=d.converter)==null?void 0:r.fromAttribute)!==void 0?d.converter:q;this._$Em=i;const p=o.fromAttribute(t,d.type);this[i]=p??((a=this._$Ej)==null?void 0:a.get(i))??p,this._$Em=null}}requestUpdate(e,t,s){var i;if(e!==void 0){const r=this.constructor,a=this[e];if(s??(s=r.getPropertyOptions(e)),!((s.hasChanged??re)(a,t)||s.useDefault&&s.reflect&&a===((i=this._$Ej)==null?void 0:i.get(e))&&!this.hasAttribute(r._$Eu(e,s))))return;this.C(e,t,s)}this.isUpdatePending===!1&&(this._$ES=this._$EP())}C(e,t,{useDefault:s,reflect:i,wrapped:r},a){s&&!(this._$Ej??(this._$Ej=new Map)).has(e)&&(this._$Ej.set(e,a??t??this[e]),r!==!0||a!==void 0)||(this._$AL.has(e)||(this.hasUpdated||s||(t=void 0),this._$AL.set(e,t)),i===!0&&this._$Em!==e&&(this._$Eq??(this._$Eq=new Set)).add(e))}async _$EP(){this.isUpdatePending=!0;try{await this._$ES}catch(t){Promise.reject(t)}const e=this.scheduleUpdate();return e!=null&&await e,!this.isUpdatePending}scheduleUpdate(){return this.performUpdate()}performUpdate(){var s;if(!this.isUpdatePending)return;if(!this.hasUpdated){if(this.renderRoot??(this.renderRoot=this.createRenderRoot()),this._$Ep){for(const[r,a]of this._$Ep)this[r]=a;this._$Ep=void 0}const i=this.constructor.elementProperties;if(i.size>0)for(const[r,a]of i){const{wrapped:d}=a,o=this[r];d!==!0||this._$AL.has(r)||o===void 0||this.C(r,void 0,a,o)}}let e=!1;const t=this._$AL;try{e=this.shouldUpdate(t),e?(this.willUpdate(t),(s=this._$EO)==null||s.forEach(i=>{var r;return(r=i.hostUpdate)==null?void 0:r.call(i)}),this.update(t)):this._$EM()}catch(i){throw e=!1,this._$EM(),i}e&&this._$AE(t)}willUpdate(e){}_$AE(e){var t;(t=this._$EO)==null||t.forEach(s=>{var i;return(i=s.hostUpdated)==null?void 0:i.call(s)}),this.hasUpdated||(this.hasUpdated=!0,this.firstUpdated(e)),this.updated(e)}_$EM(){this._$AL=new Map,this.isUpdatePending=!1}get updateComplete(){return this.getUpdateComplete()}getUpdateComplete(){return this._$ES}shouldUpdate(e){return!0}update(e){this._$Eq&&(this._$Eq=this._$Eq.forEach(t=>this._$ET(t,this[t]))),this._$EM()}updated(e){}firstUpdated(e){}};I.elementStyles=[],I.shadowRootOptions={mode:"open"},I[W("elementProperties")]=new Map,I[W("finalized")]=new Map,Q==null||Q({ReactiveElement:I}),(A.reactiveElementVersions??(A.reactiveElementVersions=[])).push("2.1.1");/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const j=globalThis,J=j.trustedTypes,pe=J?J.createPolicy("lit-html",{createHTML:n=>n}):void 0,ve="$lit$",_=`lit$${Math.random().toFixed(9).slice(2)}$`,we="?"+_,Le=`<${we}>`,P=document,R=()=>P.createComment(""),W=n=>n===null||typeof n!="object"&&typeof n!="function",ae=Array.isArray,Ue=n=>ae(n)||typeof(n==null?void 0:n[Symbol.iterator])=="function",te=`[ 	
-\f\r]`,U=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,he=/-->/g,ue=/>/g,A=RegExp(`>|${te}(?:([^\\s"'>=/]+)(${te}*=${te}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`,"g"),ge=/'/g,fe=/"/g,$e=/^(?:script|style|textarea|title)$/i,He=n=>(e,...t)=>({_$litType$:n,strings:e,values:t}),d=He(1),T=Symbol.for("lit-noChange"),u=Symbol.for("lit-nothing"),be=new WeakMap,k=P.createTreeWalker(P,129);function Ee(n,e){if(!ae(n)||!n.hasOwnProperty("raw"))throw Error("invalid template strings array");return pe!==void 0?pe.createHTML(e):e}const je=(n,e)=>{const t=n.length-1,s=[];let i,r=e===2?"<svg>":e===3?"<math>":"",a=U;for(let l=0;l<t;l++){const o=n[l];let p,g,h=-1,w=0;for(;w<o.length&&(a.lastIndex=w,g=a.exec(o),g!==null);)w=a.lastIndex,a===U?g[1]==="!--"?a=he:g[1]!==void 0?a=ue:g[2]!==void 0?($e.test(g[2])&&(i=RegExp("</"+g[2],"g")),a=A):g[3]!==void 0&&(a=A):a===A?g[0]===">"?(a=i??U,h=-1):g[1]===void 0?h=-2:(h=a.lastIndex-g[2].length,p=g[1],a=g[3]===void 0?A:g[3]==='"'?fe:ge):a===fe||a===ge?a=A:a===he||a===ue?a=U:(a=A,i=void 0);const E=a===A&&n[l+1].startsWith("/>")?" ":"";r+=a===U?o+Le:h>=0?(s.push(p),o.slice(0,h)+ve+o.slice(h)+_+E):o+_+(h===-2?l:E)}return[Ee(n,r+(n[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),s]};class F{constructor({strings:e,_$litType$:t},s){let i;this.parts=[];let r=0,a=0;const l=e.length-1,o=this.parts,[p,g]=je(e,t);if(this.el=F.createElement(p,s),k.currentNode=this.el.content,t===2||t===3){const h=this.el.content.firstChild;h.replaceWith(...h.childNodes)}for(;(i=k.nextNode())!==null&&o.length<l;){if(i.nodeType===1){if(i.hasAttributes())for(const h of i.getAttributeNames())if(h.endsWith(ve)){const w=g[a++],E=i.getAttribute(h).split(_),G=/([.?@])?(.*)/.exec(w);o.push({type:1,index:r,name:G[2],strings:E,ctor:G[1]==="."?We:G[1]==="?"?Fe:G[1]==="@"?Be:Q}),i.removeAttribute(h)}else h.startsWith(_)&&(o.push({type:6,index:r}),i.removeAttribute(h));if($e.test(i.tagName)){const h=i.textContent.split(_),w=h.length-1;if(w>0){i.textContent=J?J.emptyScript:"";for(let E=0;E<w;E++)i.append(h[E],R()),k.nextNode(),o.push({type:2,index:++r});i.append(h[w],R())}}}else if(i.nodeType===8)if(i.data===we)o.push({type:2,index:r});else{let h=-1;for(;(h=i.data.indexOf(_,h+1))!==-1;)o.push({type:7,index:r}),h+=_.length-1}r++}}static createElement(e,t){const s=P.createElement("template");return s.innerHTML=e,s}}function I(n,e,t=n,s){var a,l;if(e===T)return e;let i=s!==void 0?(a=t._$Co)==null?void 0:a[s]:t._$Cl;const r=W(e)?void 0:e._$litDirective$;return(i==null?void 0:i.constructor)!==r&&((l=i==null?void 0:i._$AO)==null||l.call(i,!1),r===void 0?i=void 0:(i=new r(n),i._$AT(n,t,s)),s!==void 0?(t._$Co??(t._$Co=[]))[s]=i:t._$Cl=i),i!==void 0&&(e=I(n,i._$AS(n,e.values),i,s)),e}class Re{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){const{el:{content:t},parts:s}=this._$AD,i=((e==null?void 0:e.creationScope)??P).importNode(t,!0);k.currentNode=i;let r=k.nextNode(),a=0,l=0,o=s[0];for(;o!==void 0;){if(a===o.index){let p;o.type===2?p=new B(r,r.nextSibling,this,e):o.type===1?p=new o.ctor(r,o.name,o.strings,this,e):o.type===6&&(p=new Ye(r,this,e)),this._$AV.push(p),o=s[++l]}a!==(o==null?void 0:o.index)&&(r=k.nextNode(),a++)}return k.currentNode=P,i}p(e){let t=0;for(const s of this._$AV)s!==void 0&&(s.strings!==void 0?(s._$AI(e,s,t),t+=s.strings.length-2):s._$AI(e[t])),t++}}class B{get _$AU(){var e;return((e=this._$AM)==null?void 0:e._$AU)??this._$Cv}constructor(e,t,s,i){this.type=2,this._$AH=u,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=s,this.options=i,this._$Cv=(i==null?void 0:i.isConnected)??!0}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&(e==null?void 0:e.nodeType)===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=I(this,e,t),W(e)?e===u||e==null||e===""?(this._$AH!==u&&this._$AR(),this._$AH=u):e!==this._$AH&&e!==T&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):Ue(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==u&&W(this._$AH)?this._$AA.nextSibling.data=e:this.T(P.createTextNode(e)),this._$AH=e}$(e){var r;const{values:t,_$litType$:s}=e,i=typeof s=="number"?this._$AC(e):(s.el===void 0&&(s.el=F.createElement(Ee(s.h,s.h[0]),this.options)),s);if(((r=this._$AH)==null?void 0:r._$AD)===i)this._$AH.p(t);else{const a=new Re(i,this),l=a.u(this.options);a.p(t),this.T(l),this._$AH=a}}_$AC(e){let t=be.get(e.strings);return t===void 0&&be.set(e.strings,t=new F(e)),t}k(e){ae(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let s,i=0;for(const r of e)i===t.length?t.push(s=new B(this.O(R()),this.O(R()),this,this.options)):s=t[i],s._$AI(r),i++;i<t.length&&(this._$AR(s&&s._$AB.nextSibling,i),t.length=i)}_$AR(e=this._$AA.nextSibling,t){var s;for((s=this._$AP)==null?void 0:s.call(this,!1,!0,t);e!==this._$AB;){const i=e.nextSibling;e.remove(),e=i}}setConnected(e){var t;this._$AM===void 0&&(this._$Cv=e,(t=this._$AP)==null||t.call(this,e))}}class Q{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,s,i,r){this.type=1,this._$AH=u,this._$AN=void 0,this.element=e,this.name=t,this._$AM=i,this.options=r,s.length>2||s[0]!==""||s[1]!==""?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=u}_$AI(e,t=this,s,i){const r=this.strings;let a=!1;if(r===void 0)e=I(this,e,t,0),a=!W(e)||e!==this._$AH&&e!==T,a&&(this._$AH=e);else{const l=e;let o,p;for(e=r[0],o=0;o<r.length-1;o++)p=I(this,l[s+o],t,o),p===T&&(p=this._$AH[o]),a||(a=!W(p)||p!==this._$AH[o]),p===u?e=u:e!==u&&(e+=(p??"")+r[o+1]),this._$AH[o]=p}a&&!i&&this.j(e)}j(e){e===u?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class We extends Q{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===u?void 0:e}}class Fe extends Q{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==u)}}class Be extends Q{constructor(e,t,s,i,r){super(e,t,s,i,r),this.type=5}_$AI(e,t=this){if((e=I(this,e,t,0)??u)===T)return;const s=this._$AH,i=e===u&&s!==u||e.capture!==s.capture||e.once!==s.once||e.passive!==s.passive,r=e!==u&&(s===u||i);i&&this.element.removeEventListener(this.name,this,s),r&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t;typeof this._$AH=="function"?this._$AH.call(((t=this.options)==null?void 0:t.host)??this.element,e):this._$AH.handleEvent(e)}}class Ye{constructor(e,t,s){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=s}get _$AU(){return this._$AM._$AU}_$AI(e){I(this,e)}}const ne=j.litHtmlPolyfillSupport;ne==null||ne(F,B),(j.litHtmlVersions??(j.litHtmlVersions=[])).push("3.3.1");const Ge=(n,e,t)=>{const s=(t==null?void 0:t.renderBefore)??e;let i=s._$litPart$;if(i===void 0){const r=(t==null?void 0:t.renderBefore)??null;s._$litPart$=i=new B(e.insertBefore(R(),r),r,void 0,t??{})}return i._$AI(n),i};/**
+ */const F=globalThis,K=F.trustedTypes,pe=K?K.createPolicy("lit-html",{createHTML:n=>n}):void 0,ve="$lit$",_=`lit$${Math.random().toFixed(9).slice(2)}$`,we="?"+_,Re=`<${we}>`,P=document,U=()=>P.createComment(""),j=n=>n===null||typeof n!="object"&&typeof n!="function",ae=Array.isArray,We=n=>ae(n)||typeof(n==null?void 0:n[Symbol.iterator])=="function",ee=`[ 	
+\f\r]`,R=/<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g,he=/-->/g,ue=/>/g,k=RegExp(`>|${ee}(?:([^\\s"'>=/]+)(${ee}*=${ee}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`,"g"),ge=/'/g,fe=/"/g,$e=/^(?:script|style|textarea|title)$/i,Fe=n=>(e,...t)=>({_$litType$:n,strings:e,values:t}),l=Fe(1),z=Symbol.for("lit-noChange"),u=Symbol.for("lit-nothing"),me=new WeakMap,D=P.createTreeWalker(P,129);function Ee(n,e){if(!ae(n)||!n.hasOwnProperty("raw"))throw Error("invalid template strings array");return pe!==void 0?pe.createHTML(e):e}const Ue=(n,e)=>{const t=n.length-1,s=[];let i,r=e===2?"<svg>":e===3?"<math>":"",a=R;for(let d=0;d<t;d++){const o=n[d];let p,g,h=-1,$=0;for(;$<o.length&&(a.lastIndex=$,g=a.exec(o),g!==null);)$=a.lastIndex,a===R?g[1]==="!--"?a=he:g[1]!==void 0?a=ue:g[2]!==void 0?($e.test(g[2])&&(i=RegExp("</"+g[2],"g")),a=k):g[3]!==void 0&&(a=k):a===k?g[0]===">"?(a=i??R,h=-1):g[1]===void 0?h=-2:(h=a.lastIndex-g[2].length,p=g[1],a=g[3]===void 0?k:g[3]==='"'?fe:ge):a===fe||a===ge?a=k:a===he||a===ue?a=R:(a=k,i=void 0);const E=a===k&&n[d+1].startsWith("/>")?" ":"";r+=a===R?o+Re:h>=0?(s.push(p),o.slice(0,h)+ve+o.slice(h)+_+E):o+_+(h===-2?d:E)}return[Ee(n,r+(n[t]||"<?>")+(e===2?"</svg>":e===3?"</math>":"")),s]};class H{constructor({strings:e,_$litType$:t},s){let i;this.parts=[];let r=0,a=0;const d=e.length-1,o=this.parts,[p,g]=Ue(e,t);if(this.el=H.createElement(p,s),D.currentNode=this.el.content,t===2||t===3){const h=this.el.content.firstChild;h.replaceWith(...h.childNodes)}for(;(i=D.nextNode())!==null&&o.length<d;){if(i.nodeType===1){if(i.hasAttributes())for(const h of i.getAttributeNames())if(h.endsWith(ve)){const $=g[a++],E=i.getAttribute(h).split(_),G=/([.?@])?(.*)/.exec($);o.push({type:1,index:r,name:G[2],strings:E,ctor:G[1]==="."?He:G[1]==="?"?Be:G[1]==="@"?Ye:Z}),i.removeAttribute(h)}else h.startsWith(_)&&(o.push({type:6,index:r}),i.removeAttribute(h));if($e.test(i.tagName)){const h=i.textContent.split(_),$=h.length-1;if($>0){i.textContent=K?K.emptyScript:"";for(let E=0;E<$;E++)i.append(h[E],U()),D.nextNode(),o.push({type:2,index:++r});i.append(h[$],U())}}}else if(i.nodeType===8)if(i.data===we)o.push({type:2,index:r});else{let h=-1;for(;(h=i.data.indexOf(_,h+1))!==-1;)o.push({type:7,index:r}),h+=_.length-1}r++}}static createElement(e,t){const s=P.createElement("template");return s.innerHTML=e,s}}function T(n,e,t=n,s){var a,d;if(e===z)return e;let i=s!==void 0?(a=t._$Co)==null?void 0:a[s]:t._$Cl;const r=j(e)?void 0:e._$litDirective$;return(i==null?void 0:i.constructor)!==r&&((d=i==null?void 0:i._$AO)==null||d.call(i,!1),r===void 0?i=void 0:(i=new r(n),i._$AT(n,t,s)),s!==void 0?(t._$Co??(t._$Co=[]))[s]=i:t._$Cl=i),i!==void 0&&(e=T(n,i._$AS(n,e.values),i,s)),e}class je{constructor(e,t){this._$AV=[],this._$AN=void 0,this._$AD=e,this._$AM=t}get parentNode(){return this._$AM.parentNode}get _$AU(){return this._$AM._$AU}u(e){const{el:{content:t},parts:s}=this._$AD,i=((e==null?void 0:e.creationScope)??P).importNode(t,!0);D.currentNode=i;let r=D.nextNode(),a=0,d=0,o=s[0];for(;o!==void 0;){if(a===o.index){let p;o.type===2?p=new B(r,r.nextSibling,this,e):o.type===1?p=new o.ctor(r,o.name,o.strings,this,e):o.type===6&&(p=new Ge(r,this,e)),this._$AV.push(p),o=s[++d]}a!==(o==null?void 0:o.index)&&(r=D.nextNode(),a++)}return D.currentNode=P,i}p(e){let t=0;for(const s of this._$AV)s!==void 0&&(s.strings!==void 0?(s._$AI(e,s,t),t+=s.strings.length-2):s._$AI(e[t])),t++}}class B{get _$AU(){var e;return((e=this._$AM)==null?void 0:e._$AU)??this._$Cv}constructor(e,t,s,i){this.type=2,this._$AH=u,this._$AN=void 0,this._$AA=e,this._$AB=t,this._$AM=s,this.options=i,this._$Cv=(i==null?void 0:i.isConnected)??!0}get parentNode(){let e=this._$AA.parentNode;const t=this._$AM;return t!==void 0&&(e==null?void 0:e.nodeType)===11&&(e=t.parentNode),e}get startNode(){return this._$AA}get endNode(){return this._$AB}_$AI(e,t=this){e=T(this,e,t),j(e)?e===u||e==null||e===""?(this._$AH!==u&&this._$AR(),this._$AH=u):e!==this._$AH&&e!==z&&this._(e):e._$litType$!==void 0?this.$(e):e.nodeType!==void 0?this.T(e):We(e)?this.k(e):this._(e)}O(e){return this._$AA.parentNode.insertBefore(e,this._$AB)}T(e){this._$AH!==e&&(this._$AR(),this._$AH=this.O(e))}_(e){this._$AH!==u&&j(this._$AH)?this._$AA.nextSibling.data=e:this.T(P.createTextNode(e)),this._$AH=e}$(e){var r;const{values:t,_$litType$:s}=e,i=typeof s=="number"?this._$AC(e):(s.el===void 0&&(s.el=H.createElement(Ee(s.h,s.h[0]),this.options)),s);if(((r=this._$AH)==null?void 0:r._$AD)===i)this._$AH.p(t);else{const a=new je(i,this),d=a.u(this.options);a.p(t),this.T(d),this._$AH=a}}_$AC(e){let t=me.get(e.strings);return t===void 0&&me.set(e.strings,t=new H(e)),t}k(e){ae(this._$AH)||(this._$AH=[],this._$AR());const t=this._$AH;let s,i=0;for(const r of e)i===t.length?t.push(s=new B(this.O(U()),this.O(U()),this,this.options)):s=t[i],s._$AI(r),i++;i<t.length&&(this._$AR(s&&s._$AB.nextSibling,i),t.length=i)}_$AR(e=this._$AA.nextSibling,t){var s;for((s=this._$AP)==null?void 0:s.call(this,!1,!0,t);e!==this._$AB;){const i=e.nextSibling;e.remove(),e=i}}setConnected(e){var t;this._$AM===void 0&&(this._$Cv=e,(t=this._$AP)==null||t.call(this,e))}}class Z{get tagName(){return this.element.tagName}get _$AU(){return this._$AM._$AU}constructor(e,t,s,i,r){this.type=1,this._$AH=u,this._$AN=void 0,this.element=e,this.name=t,this._$AM=i,this.options=r,s.length>2||s[0]!==""||s[1]!==""?(this._$AH=Array(s.length-1).fill(new String),this.strings=s):this._$AH=u}_$AI(e,t=this,s,i){const r=this.strings;let a=!1;if(r===void 0)e=T(this,e,t,0),a=!j(e)||e!==this._$AH&&e!==z,a&&(this._$AH=e);else{const d=e;let o,p;for(e=r[0],o=0;o<r.length-1;o++)p=T(this,d[s+o],t,o),p===z&&(p=this._$AH[o]),a||(a=!j(p)||p!==this._$AH[o]),p===u?e=u:e!==u&&(e+=(p??"")+r[o+1]),this._$AH[o]=p}a&&!i&&this.j(e)}j(e){e===u?this.element.removeAttribute(this.name):this.element.setAttribute(this.name,e??"")}}class He extends Z{constructor(){super(...arguments),this.type=3}j(e){this.element[this.name]=e===u?void 0:e}}class Be extends Z{constructor(){super(...arguments),this.type=4}j(e){this.element.toggleAttribute(this.name,!!e&&e!==u)}}class Ye extends Z{constructor(e,t,s,i,r){super(e,t,s,i,r),this.type=5}_$AI(e,t=this){if((e=T(this,e,t,0)??u)===z)return;const s=this._$AH,i=e===u&&s!==u||e.capture!==s.capture||e.once!==s.once||e.passive!==s.passive,r=e!==u&&(s===u||i);i&&this.element.removeEventListener(this.name,this,s),r&&this.element.addEventListener(this.name,this,e),this._$AH=e}handleEvent(e){var t;typeof this._$AH=="function"?this._$AH.call(((t=this.options)==null?void 0:t.host)??this.element,e):this._$AH.handleEvent(e)}}class Ge{constructor(e,t,s){this.element=e,this.type=6,this._$AN=void 0,this._$AM=t,this.options=s}get _$AU(){return this._$AM._$AU}_$AI(e){T(this,e)}}const te=F.litHtmlPolyfillSupport;te==null||te(H,B),(F.litHtmlVersions??(F.litHtmlVersions=[])).push("3.3.1");const Ve=(n,e,t)=>{const s=(t==null?void 0:t.renderBefore)??e;let i=s._$litPart$;if(i===void 0){const r=(t==null?void 0:t.renderBefore)??null;s._$litPart$=i=new B(e.insertBefore(U(),r),r,void 0,t??{})}return i._$AI(n),i};/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const D=globalThis;class y extends N{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=Ge(t,this.renderRoot,this.renderOptions)}connectedCallback(){var e;super.connectedCallback(),(e=this._$Do)==null||e.setConnected(!0)}disconnectedCallback(){var e;super.disconnectedCallback(),(e=this._$Do)==null||e.setConnected(!1)}render(){return T}}var me;y._$litElement$=!0,y.finalized=!0,(me=D.litElementHydrateSupport)==null||me.call(D,{LitElement:y});const ie=D.litElementPolyfillSupport;ie==null||ie({LitElement:y});(D.litElementVersions??(D.litElementVersions=[])).push("4.2.1");/**
+ */const C=globalThis;class y extends I{constructor(){super(...arguments),this.renderOptions={host:this},this._$Do=void 0}createRenderRoot(){var t;const e=super.createRenderRoot();return(t=this.renderOptions).renderBefore??(t.renderBefore=e.firstChild),e}update(e){const t=this.render();this.hasUpdated||(this.renderOptions.isConnected=this.isConnected),super.update(e),this._$Do=Ve(t,this.renderRoot,this.renderOptions)}connectedCallback(){var e;super.connectedCallback(),(e=this._$Do)==null||e.setConnected(!0)}disconnectedCallback(){var e;super.disconnectedCallback(),(e=this._$Do)==null||e.setConnected(!1)}render(){return z}}var xe;y._$litElement$=!0,y.finalized=!0,(xe=C.litElementHydrateSupport)==null||xe.call(C,{LitElement:y});const ne=C.litElementPolyfillSupport;ne==null||ne({LitElement:y});(C.litElementVersions??(C.litElementVersions=[])).push("4.2.1");/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
@@ -24,11 +24,11 @@
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */const Ve={attribute:!0,type:String,converter:K,reflect:!1,hasChanged:re},qe=(n=Ve,e,t)=>{const{kind:s,metadata:i}=t;let r=globalThis.litPropertyMetadata.get(i);if(r===void 0&&globalThis.litPropertyMetadata.set(i,r=new Map),s==="setter"&&((n=Object.create(n)).wrapped=!0),r.set(t.name,n),s==="accessor"){const{name:a}=t;return{set(l){const o=e.get.call(this);e.set.call(this,l),this.requestUpdate(a,o,n)},init(l){return l!==void 0&&this.C(a,void 0,n,l),l}}}if(s==="setter"){const{name:a}=t;return function(l){const o=this[a];e.call(this,l),this.requestUpdate(a,o,n)}}throw Error("Unsupported decorator location: "+s)};function _e(n){return(e,t)=>typeof t=="object"?qe(n,e,t):((s,i,r)=>{const a=i.hasOwnProperty(r);return i.constructor.createProperty(r,s),a?Object.getOwnPropertyDescriptor(i,r):void 0})(n,e,t)}/**
+ */const qe={attribute:!0,type:String,converter:q,reflect:!1,hasChanged:re},Ke=(n=qe,e,t)=>{const{kind:s,metadata:i}=t;let r=globalThis.litPropertyMetadata.get(i);if(r===void 0&&globalThis.litPropertyMetadata.set(i,r=new Map),s==="setter"&&((n=Object.create(n)).wrapped=!0),r.set(t.name,n),s==="accessor"){const{name:a}=t;return{set(d){const o=e.get.call(this);e.set.call(this,d),this.requestUpdate(a,o,n)},init(d){return d!==void 0&&this.C(a,void 0,n,d),d}}}if(s==="setter"){const{name:a}=t;return function(d){const o=this[a];e.call(this,d),this.requestUpdate(a,o,n)}}throw Error("Unsupported decorator location: "+s)};function _e(n){return(e,t)=>typeof t=="object"?Ke(n,e,t):((s,i,r)=>{const a=i.hasOwnProperty(r);return i.constructor.createProperty(r,s),a?Object.getOwnPropertyDescriptor(i,r):void 0})(n,e,t)}/**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
- */function c(n){return _e({...n,state:!0,attribute:!1})}const Se=[{id:"Mon",label:"Monday",exercises:[{id:1,order:1,name:"Bench Press",sets:4,reps:10,weight:"135 lbs",muscleGroup:"Chest"},{id:2,order:2,name:"Push-ups",sets:3,reps:15,weight:"",muscleGroup:"Chest"}]},{id:"Tue",label:"Tuesday",exercises:[]},{id:"Wed",label:"Wednesday",exercises:[]},{id:"Thu",label:"Thursday",exercises:[]},{id:"Fri",label:"Friday",exercises:[]},{id:"Sat",label:"Saturday",exercises:[]},{id:"Sun",label:"Sunday",exercises:[]}],Ke=["Chest","Back","Legs","Shoulders","Arms","Core","Cardio"],Je=[{id:1,dateLabel:"Wednesday, November 19, 2025",mood:"Great",text:"Today was an amazing workout day! I pushed through my limits and felt incredibly energized afterwards. My confidence is growing with each session."},{id:2,dateLabel:"Tuesday, November 18, 2025",mood:"Good",text:"Solid workout today. Had a bit of trouble with motivation in the morning but once I got started, everything flowed well."}],C={days:[...Se],setDays(n){this.days=n},getDays(){return this.days},getExercisesForDay(n){const e=this.days.find(t=>t.id===n);return(e==null?void 0:e.exercises)||[]}},L=`:host {
+ */function c(n){return _e({...n,state:!0,attribute:!1})}const Se=[{id:"Mon",label:"Monday",exercises:[{id:1,order:1,name:"Bench Press",sets:4,reps:10,weight:"135 lbs",muscleGroup:"Chest"},{id:2,order:2,name:"Push-ups",sets:3,reps:15,weight:"",muscleGroup:"Chest"}]},{id:"Tue",label:"Tuesday",exercises:[]},{id:"Wed",label:"Wednesday",exercises:[]},{id:"Thu",label:"Thursday",exercises:[]},{id:"Fri",label:"Friday",exercises:[]},{id:"Sat",label:"Saturday",exercises:[]},{id:"Sun",label:"Sunday",exercises:[]}],Je=["Chest","Back","Legs","Shoulders","Arms","Core","Cardio"],Xe=[{id:1,dateLabel:"Wednesday, November 19, 2025",mood:"Great",text:"Today was an amazing workout day! I pushed through my limits and felt incredibly energized afterwards. My confidence is growing with each session."},{id:2,dateLabel:"Tuesday, November 18, 2025",mood:"Good",text:"Solid workout today. Had a bit of trouble with motivation in the morning but once I got started, everything flowed well."}],S={days:[...Se],setDays(n){this.days=n},getDays(){return this.days},getExercisesForDay(n){const e=this.days.find(t=>t.id===n);return(e==null?void 0:e.exercises)||[]}},L=`:host {
   display: block;
 }
 
@@ -1256,7 +1256,7 @@ html {
   background: rgba(79, 70, 229, 0.2);
   color: #1e293b;
 }
-`;var Xe=Object.defineProperty,Ze=Object.getOwnPropertyDescriptor,v=(n,e,t,s)=>{for(var i=s>1?void 0:s?Ze(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&Xe(e,t,i),i};let b=class extends y{constructor(){super(...arguments),this.selectedDayId="Mon",this.days=[...Se],this.showExerciseForm=!1,this.newExerciseName="",this.newExerciseSets="3",this.newExerciseReps="10",this.newExerciseWeight="",this.newExerciseMuscleGroup="Chest",this.showWeeklySummary=!0}connectedCallback(){super.connectedCallback(),C.setDays(this.days)}updated(n){super.updated(n),n.has("days")&&C.setDays(this.days)}get plannerDays(){return this.days}get selectedDay(){return this.days.find(n=>n.id===this.selectedDayId)??this.days[0]}get totalExercises(){return this.days.reduce((n,e)=>n+e.exercises.length,0)}get activeDays(){return this.days.filter(n=>n.exercises.length>0).length}setDay(n){this.selectedDayId=n}openExerciseForm(){this.showExerciseForm=!0}toggleWeeklySummary(){this.showWeeklySummary=!this.showWeeklySummary}cancelExerciseForm(){this.showExerciseForm=!1,this.newExerciseName="",this.newExerciseSets="3",this.newExerciseReps="10",this.newExerciseWeight="",this.newExerciseMuscleGroup="Chest"}onExerciseNameInput(n){this.newExerciseName=n.target.value}onExerciseSetsInput(n){this.newExerciseSets=n.target.value}onExerciseRepsInput(n){this.newExerciseReps=n.target.value}onExerciseWeightInput(n){this.newExerciseWeight=n.target.value}onExerciseMuscleGroupInput(n){this.newExerciseMuscleGroup=n.target.value}saveExercise(n){n.preventDefault();const e=this.newExerciseName.trim();if(!e)return;const t=Number(this.newExerciseSets)||0,s=Number(this.newExerciseReps)||0,i=this.selectedDayId,r=this.days.find(p=>p.id===i),a=((r==null?void 0:r.exercises.length)??0)+1,l={id:Date.now(),order:a,name:e,sets:t,reps:s,weight:this.newExerciseWeight.trim()||"",muscleGroup:this.newExerciseMuscleGroup.trim()||"General"},o=this.days.map(p=>p.id===i?{...p,exercises:[...p.exercises,l]}:p);this.days=o,C.setDays(this.days),this.cancelExerciseForm()}deleteExercise(n,e){this.days=this.days.map(t=>{if(t.id!==n)return t;const i=t.exercises.filter(r=>r.id!==e).map((r,a)=>({...r,order:a+1}));return{...t,exercises:i}})}renderSummaryCard(n,e,t){return d`
+`;var Ze=Object.defineProperty,Qe=Object.getOwnPropertyDescriptor,v=(n,e,t,s)=>{for(var i=s>1?void 0:s?Qe(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&Ze(e,t,i),i};let m=class extends y{constructor(){super(...arguments),this.selectedDayId="Mon",this.days=[...Se],this.showExerciseForm=!1,this.newExerciseName="",this.newExerciseSets="3",this.newExerciseReps="10",this.newExerciseWeight="",this.newExerciseMuscleGroup="Chest",this.showWeeklySummary=!0}connectedCallback(){super.connectedCallback(),S.setDays(this.days)}updated(n){super.updated(n),n.has("days")&&S.setDays(this.days)}get plannerDays(){return this.days}get selectedDay(){return this.days.find(n=>n.id===this.selectedDayId)??this.days[0]}get totalExercises(){return this.days.reduce((n,e)=>n+e.exercises.length,0)}get activeDays(){return this.days.filter(n=>n.exercises.length>0).length}setDay(n){this.selectedDayId=n}openExerciseForm(){this.showExerciseForm=!0}toggleWeeklySummary(){this.showWeeklySummary=!this.showWeeklySummary}cancelExerciseForm(){this.showExerciseForm=!1,this.newExerciseName="",this.newExerciseSets="3",this.newExerciseReps="10",this.newExerciseWeight="",this.newExerciseMuscleGroup="Chest"}onExerciseNameInput(n){this.newExerciseName=n.target.value}onExerciseSetsInput(n){this.newExerciseSets=n.target.value}onExerciseRepsInput(n){this.newExerciseReps=n.target.value}onExerciseWeightInput(n){this.newExerciseWeight=n.target.value}onExerciseMuscleGroupInput(n){this.newExerciseMuscleGroup=n.target.value}saveExercise(n){n.preventDefault();const e=this.newExerciseName.trim();if(!e)return;const t=Number(this.newExerciseSets)||0,s=Number(this.newExerciseReps)||0,i=this.selectedDayId,r=this.days.find(p=>p.id===i),a=((r==null?void 0:r.exercises.length)??0)+1,d={id:Date.now(),order:a,name:e,sets:t,reps:s,weight:this.newExerciseWeight.trim()||"",muscleGroup:this.newExerciseMuscleGroup.trim()||"General"},o=this.days.map(p=>p.id===i?{...p,exercises:[...p.exercises,d]}:p);this.days=o,S.setDays(this.days),this.cancelExerciseForm()}deleteExercise(n,e){this.days=this.days.map(t=>{if(t.id!==n)return t;const i=t.exercises.filter(r=>r.id!==e).map((r,a)=>({...r,order:a+1}));return{...t,exercises:i}})}renderSummaryCard(n,e,t){return l`
       <div class="summary-card">
         <div class="summary-icon">${t}</div>
         <div>
@@ -1264,7 +1264,7 @@ html {
           <div class="summary-value">${e}</div>
         </div>
       </div>
-    `}render(){const n=this.selectedDay;return d`
+    `}render(){const n=this.selectedDay;return l`
       <section class="card-gradient">
         <div style="font-size: 15px; font-weight: 600;">Weekly Workout Plan</div>
         <div style="margin-top:4px;font-size:11px;color:#e0e7ff;">
@@ -1275,13 +1275,13 @@ html {
       <section class="card-white">
         <div class="section-title">Select Day</div>
         <div class="day-row">
-          ${this.days.map(e=>d`
+          ${this.days.map(e=>l`
               <button
                 class=${`day-pill ${e.id===this.selectedDayId?"active":""}`}
                 @click=${()=>this.setDay(e.id)}
               >
                 <div>${e.id}</div>
-                ${e.exercises.length>0?d`<div style="font-size: 9px; margin-top: 2px; opacity: 0.9;">
+                ${e.exercises.length>0?l`<div style="font-size: 9px; margin-top: 2px; opacity: 0.9;">
                       ${e.exercises.length} ${e.exercises.length===1?"exercise":"exercises"}
                     </div>`:null}
               </button>
@@ -1300,12 +1300,12 @@ html {
             </div>
           </div>
 
-          ${this.showExerciseForm?d`
+          ${this.showExerciseForm?l`
                 <button class="add-cancel-chip" @click=${this.cancelExerciseForm}>
                   <span>✕</span>
                   <span>Cancel</span>
                 </button>
-              `:d`
+              `:l`
                 <button
                   style="
                     border-radius:999px;
@@ -1324,7 +1324,7 @@ html {
               `}
         </div>
 
-        ${n.exercises.length===0?d`
+        ${n.exercises.length===0?l`
               <div class="placeholder">
                 <div
                   style="
@@ -1340,8 +1340,8 @@ html {
                 <div>No exercises planned for this day</div>
                 <div style="margin-top:4px;">Click "Add Exercise" to get started</div>
               </div>
-            `:d`
-              ${n.exercises.map(e=>d`
+            `:l`
+              ${n.exercises.map(e=>l`
                   <div class="exercise-row">
                     <div class="exercise-number">${e.order}</div>
                     <div class="exercise-main">
@@ -1363,7 +1363,7 @@ html {
             `}
       </section>
 
-      ${this.showExerciseForm?d`
+      ${this.showExerciseForm?l`
             <section class="add-card">
               <div class="add-card-inner">
                 <div class="add-card-header">
@@ -1403,7 +1403,7 @@ html {
                           .value=${this.newExerciseMuscleGroup}
                           @change=${this.onExerciseMuscleGroupInput}
                         >
-                          ${Ke.map(e=>d`<option value=${e}>${e}</option>`)}
+                          ${Je.map(e=>l`<option value=${e}>${e}</option>`)}
                         </select>
                         <span class="select-chevron">⌄</span>
                       </div>
@@ -1477,7 +1477,7 @@ html {
           </div>
         </div>
 
-        ${this.showWeeklySummary?d`
+        ${this.showWeeklySummary?l`
               <div class="summary-row">
                 ${this.renderSummaryCard("Total Exercises",this.totalExercises,"🎯")}
                 ${this.renderSummaryCard("Active Days",this.activeDays,"🧬")}
@@ -1485,7 +1485,7 @@ html {
               </div>
             `:null}
       </section>
-    `}};b.styles=M(L);v([c()],b.prototype,"selectedDayId",2);v([c()],b.prototype,"days",2);v([c()],b.prototype,"showExerciseForm",2);v([c()],b.prototype,"newExerciseName",2);v([c()],b.prototype,"newExerciseSets",2);v([c()],b.prototype,"newExerciseReps",2);v([c()],b.prototype,"newExerciseWeight",2);v([c()],b.prototype,"newExerciseMuscleGroup",2);v([c()],b.prototype,"showWeeklySummary",2);b=v([O("planner-page")],b);var Qe=Object.defineProperty,et=Object.getOwnPropertyDescriptor,$=(n,e,t,s)=>{for(var i=s>1?void 0:s?et(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&Qe(e,t,i),i};function V(){return new Date().toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"})}function xe(){const n=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],e=new Date().getDay();return n[e]}const tt=[{id:1,dateLabel:"Wednesday, November 19, 2025",durationMinutes:45,completionPercent:67,notes:"Great workout! Felt strong on bench press.",exercises:[{id:1,name:"Bench Press",category:"Chest",reps:10,weight:"135 lbs",completionStatus:"complete",difficulty:"Moderate"},{id:2,name:"Push-ups",category:"Chest",reps:15,weight:"",completionStatus:"partial",difficulty:"Easy"},{id:3,name:"Dumbbell Flyes",category:"Chest",reps:12,weight:"30 lbs",completionStatus:"incomplete",difficulty:"Hard"}]},{id:2,dateLabel:"Monday, November 17, 2025",durationMinutes:60,completionPercent:100,notes:"Leg day was tough but rewarding.",exercises:[{id:1,name:"Squats",category:"Legs",reps:12,weight:"225 lbs",completionStatus:"complete",difficulty:"Hard"},{id:2,name:"Leg Press",category:"Legs",reps:15,weight:"270 lbs",completionStatus:"complete",difficulty:"Moderate"}]}];let x=class extends y{constructor(){super(...arguments),this.logEntries=tt,this.showNewEntry=!1,this.editingEntryId=null,this.newNotes="",this.todayExercises=[],this.exerciseCompletions={},this.exerciseDifficulties={},this.workoutDuration=""}getPlannerExercises(){const n=xe();let e=C.getExercisesForDay(n);if(e.length===0){const t=document.querySelector("planner-page");if(t){const s=t.plannerDays||t.days||[];if(s.length>0){const i=s.find(r=>r.id===n);e=(i==null?void 0:i.exercises)||[],C.setDays(s)}}}return e}openNewEntry(){let n=this.getPlannerExercises();if(n.length===0){const e=document.querySelector("planner-page");if(e){const t=e.plannerDays||e.days||[];if(t.length>0){C.setDays(t);const s=xe();n=C.getExercisesForDay(s)}}}this.todayExercises=n,n.forEach(e=>{this.exerciseCompletions[e.id]="incomplete",this.exerciseDifficulties[e.id]="Moderate"}),this.showNewEntry=!0}calculateCompletionPercent(n){if(n.exercises.length===0)return 0;let e=0;return n.exercises.forEach(t=>{t.completionStatus==="complete"?e+=100:t.completionStatus==="partial"?e+=50:e+=0}),Math.round(e/n.exercises.length)}get filteredEntries(){return this.logEntries}get totalEntries(){return this.filteredEntries.length}get completedToday(){const n=V();return this.filteredEntries.filter(e=>e.dateLabel===n&&e.completionPercent===100).length}get thisWeek(){return this.filteredEntries.length}cancelNewEntry(){this.showNewEntry=!1,this.editingEntryId=null,this.newNotes="",this.todayExercises=[],this.exerciseCompletions={},this.exerciseDifficulties={},this.workoutDuration=""}onNotesInput(n){this.newNotes=n.target.value}onDurationInput(n){this.workoutDuration=n.target.value}onExerciseCompletionChange(n,e){const t=e.target;this.exerciseCompletions[n]=t.value,this.requestUpdate()}onExerciseDifficultyChange(n,e){const t=e.target;this.exerciseDifficulties[n]=t.value,this.requestUpdate()}editEntry(n){this.editingEntryId=n.id,this.showNewEntry=!0,this.newNotes=n.notes,this.workoutDuration=n.durationMinutes.toString(),this.todayExercises=n.exercises.map(e=>({id:e.id,order:1,name:e.name,sets:1,reps:e.reps,weight:e.weight||"",muscleGroup:e.category})),n.exercises.forEach(e=>{this.exerciseCompletions[e.id]=e.completionStatus,this.exerciseDifficulties[e.id]=e.difficulty})}deleteEntry(n){confirm("Are you sure you want to delete this entry?")&&(this.logEntries=this.logEntries.filter(e=>e.id!==n))}saveEntry(n){n.preventDefault();const e=this.todayExercises.map(i=>({id:i.id,name:i.name,category:i.muscleGroup,reps:i.reps,weight:i.weight||"",completionStatus:this.exerciseCompletions[i.id]||"incomplete",difficulty:this.exerciseDifficulties[i.id]||"Moderate"})),t=parseInt(this.workoutDuration)||0,s=this.calculateCompletionPercent({id:0,dateLabel:"",durationMinutes:t,completionPercent:0,notes:"",exercises:e});if(this.editingEntryId){const i=this.logEntries.find(r=>r.id===this.editingEntryId);if(i){const r={...i,durationMinutes:t,completionPercent:s,notes:this.newNotes.trim(),exercises:e};this.logEntries=this.logEntries.map(a=>a.id===this.editingEntryId?r:a)}}else{const i={id:Date.now(),dateLabel:V(),durationMinutes:t,completionPercent:s,notes:this.newNotes.trim(),exercises:e};this.logEntries=[i,...this.logEntries]}this.cancelNewEntry()}renderSummaryCard(n,e,t){return d`
+    `}};m.styles=N(L);v([c()],m.prototype,"selectedDayId",2);v([c()],m.prototype,"days",2);v([c()],m.prototype,"showExerciseForm",2);v([c()],m.prototype,"newExerciseName",2);v([c()],m.prototype,"newExerciseSets",2);v([c()],m.prototype,"newExerciseReps",2);v([c()],m.prototype,"newExerciseWeight",2);v([c()],m.prototype,"newExerciseMuscleGroup",2);v([c()],m.prototype,"showWeeklySummary",2);m=v([O("planner-page")],m);var et=Object.defineProperty,tt=Object.getOwnPropertyDescriptor,w=(n,e,t,s)=>{for(var i=s>1?void 0:s?tt(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&et(e,t,i),i};function Ae(n){return n.toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"})}function ie(){return Ae(new Date)}function nt(n){if(!n)return ie();const e=new Date(n);return Number.isNaN(e.getTime())?ie():Ae(e)}function be(){const n=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],e=new Date().getDay();return n[e]}const it=[{id:1,dateLabel:"Wednesday, November 19, 2025",durationMinutes:45,completionPercent:80,notes:"Felt great today! Increased weight on squats and completed all sets.",exercises:[{id:1,name:"Barbell Back Squat",category:"Legs",reps:3*8,weight:"185 lb",completionStatus:"complete",difficulty:"Hard"},{id:2,name:"Romanian Deadlift",category:"Legs",reps:3*10,weight:"135 lb",completionStatus:"partial",difficulty:"Moderate"},{id:3,name:"Leg Press",category:"Legs",reps:3*12,weight:"220 lb",completionStatus:"complete",difficulty:"Moderate"}]},{id:2,dateLabel:"Monday, November 17, 2025",durationMinutes:30,completionPercent:60,notes:"Short session, but got a good pump on chest. Felt a bit tired.",exercises:[{id:4,name:"Bench Press",category:"Chest",reps:3*8,weight:"135 lb",completionStatus:"partial",difficulty:"Moderate"},{id:5,name:"Incline Dumbbell Press",category:"Chest",reps:3*10,weight:"45 lb",completionStatus:"complete",difficulty:"Moderate"},{id:6,name:"Cable Fly",category:"Chest",reps:3*12,weight:"25 lb",completionStatus:"incomplete",difficulty:"Easy"}]}];let b=class extends y{constructor(){super(...arguments),this.logEntries=it,this.showNewEntry=!1,this.editingEntryId=null,this.newNotes="",this.todayExercises=[],this.exerciseCompletions={},this.exerciseDifficulties={},this.workoutDuration="",this.selectedDateIso=new Date().toISOString().split("T")[0]}getPlannerExercises(){const n=be();let e=S.getExercisesForDay(n);if(e.length===0){const t=document.querySelector("planner-page");if(t){const s=t.plannerDays||t.days||[];if(s.length>0){S.setDays(s);const r=S.getDays().find(a=>a.id===n);r&&r.exercises&&(e=r.exercises)}}}return e}openNewEntry(){let n=this.getPlannerExercises();if(n.length===0){const e=document.querySelector("planner-page");if(e){const t=e.plannerDays||e.days||[];if(t.length>0){S.setDays(t);const s=be();n=S.getExercisesForDay(s)}}}this.todayExercises=n,n.forEach(e=>{this.exerciseCompletions[e.id]="incomplete",this.exerciseDifficulties[e.id]="Moderate"}),this.selectedDateIso=new Date().toISOString().split("T")[0],this.showNewEntry=!0}calculateCompletionPercent(n){if(n.exercises.length===0)return 0;let e=0,t=n.exercises.length*2;for(const s of n.exercises)s.completionStatus==="complete"?e+=2:s.completionStatus==="partial"&&(e+=1);return Math.round(e/t*100)}get totalEntries(){return this.logEntries.length}get completedToday(){const n=ie();return this.logEntries.filter(t=>t.dateLabel===n).length}get thisWeekEntries(){const n=new Date,e=new Date(n);e.setDate(n.getDate()-n.getDay()),e.setHours(0,0,0,0);const t=new Date(e);return t.setDate(e.getDate()+7),this.logEntries.filter(s=>{const i=new Date(s.dateLabel);return i>=e&&i<t}).length}get filteredEntries(){return this.logEntries}cancelNewEntry(){this.showNewEntry=!1,this.editingEntryId=null,this.newNotes="",this.todayExercises=[],this.exerciseCompletions={},this.exerciseDifficulties={},this.workoutDuration="",this.selectedDateIso=new Date().toISOString().split("T")[0]}onNotesInput(n){this.newNotes=n.target.value}onDurationInput(n){this.workoutDuration=n.target.value}onDateChange(n){this.selectedDateIso=n.target.value}onExerciseCompletionChange(n,e){const t=e.target;this.exerciseCompletions[n]=t.value,this.requestUpdate()}onExerciseDifficultyChange(n,e){const t=e.target;this.exerciseDifficulties[n]=t.value,this.requestUpdate()}onExerciseRepsChange(n,e){const t=e.target,s=parseInt(t.value)||0;this.todayExercises=this.todayExercises.map(i=>i.id===n?{...i,reps:s}:i)}onExerciseWeightChange(n,e){const s=e.target.value;this.todayExercises=this.todayExercises.map(i=>i.id===n?{...i,weight:s}:i)}editEntry(n){const e=new Date(n.dateLabel);Number.isNaN(e.getTime())?this.selectedDateIso=new Date().toISOString().split("T")[0]:this.selectedDateIso=e.toISOString().split("T")[0],this.editingEntryId=n.id,this.showNewEntry=!0,this.newNotes=n.notes,this.workoutDuration=n.durationMinutes.toString(),this.todayExercises=n.exercises.map(t=>({id:t.id,order:1,name:t.name,sets:1,reps:t.reps,weight:t.weight||"",muscleGroup:t.category})),n.exercises.forEach(t=>{this.exerciseCompletions[t.id]=t.completionStatus,this.exerciseDifficulties[t.id]=t.difficulty})}deleteEntry(n){confirm("Are you sure you want to delete this entry?")&&(this.logEntries=this.logEntries.filter(e=>e.id!==n))}saveEntry(n){n.preventDefault();const e=this.todayExercises.map(r=>({id:r.id,name:r.name,category:r.muscleGroup,reps:r.reps,weight:r.weight||"",completionStatus:this.exerciseCompletions[r.id]||"incomplete",difficulty:this.exerciseDifficulties[r.id]||"Moderate"})),t=parseInt(this.workoutDuration)||0,s=this.calculateCompletionPercent({id:0,dateLabel:"",durationMinutes:t,completionPercent:0,notes:"",exercises:e}),i=nt(this.selectedDateIso);if(this.editingEntryId){const r=this.logEntries.find(a=>a.id===this.editingEntryId);if(r){const a={...r,dateLabel:i,durationMinutes:t,completionPercent:s,notes:this.newNotes.trim(),exercises:e};this.logEntries=this.logEntries.map(d=>d.id===this.editingEntryId?a:d)}}else{const r={id:Date.now(),dateLabel:i,durationMinutes:t,completionPercent:s,notes:this.newNotes.trim(),exercises:e};this.logEntries=[r,...this.logEntries]}this.cancelNewEntry()}renderSummaryCard(n,e,t){return l`
       <div class="summary-card">
         <div class="summary-icon">${t}</div>
         <div>
@@ -1493,226 +1493,290 @@ html {
           <div class="summary-value">${e}</div>
         </div>
       </div>
-    `}renderProgressBar(n){return d`
-      <div style="width: 100%; height: 8px; background: #e5e7eb; border-radius: 999px; overflow: hidden; margin-top: 4px;">
-        <div
-          style="height: 100%; background: linear-gradient(90deg, #22c55e, #16a34a); width: ${n}%; transition: width 0.3s ease;"
-        ></div>
+    `}renderExerciseRow(n){return l`
+      <div class="log-exercise-row">
+        <div class="log-exercise-main">
+          <div class="log-exercise-name">${n.name}</div>
+          <div class="log-exercise-meta">
+            <span class="log-pill log-pill-category">${n.category}</span>
+            <span class="log-pill">${n.reps} reps</span>
+            ${n.weight?l`<span class="log-pill log-pill-weight">${n.weight}</span>`:null}
+            <span
+              class="${["log-pill",n.difficulty==="Easy"?"diff-easy":n.difficulty==="Moderate"?"diff-moderate":n.difficulty==="Hard"?"diff-hard":"diff-very-hard"].join(" ")}"
+            >
+              ${n.difficulty}
+            </span>
+          </div>
+        </div>
+        <div class="log-exercise-status">
+          <span
+            class="${["status-pill",n.completionStatus==="complete"?"status-complete":n.completionStatus==="partial"?"status-partial":"status-incomplete"].join(" ")}"
+          >
+            ${n.completionStatus==="complete"?"Completed":n.completionStatus==="partial"?"Partially":"Not done"}
+          </span>
+        </div>
       </div>
-    `}renderLogEntry(n){const e=n.completionPercent===100;return d`
-      <section class="log-card">
-        <div class="log-card-header">
-          <div class="log-header-left">
-            <div class="log-date-icon">📅</div>
-            <div>
-              <div class="log-date-title">${n.dateLabel}</div>
-              ${n.durationMinutes?d`<div class="log-date-sub">
-                    ${n.durationMinutes} minutes
-                  </div>`:d`<div class="log-date-sub">No duration recorded</div>`}
-            </div>
-          </div>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <div class="log-badge ${e?"":"partial"}">
-              ${e?d`100% Complete`:d`${n.completionPercent}% Complete`}
-            </div>
-            <button
-              style="border-radius: 999px; border: 1px solid #e5e7eb; background: #f9fafb; padding: 6px 10px; font-size: 11px; color: #4b5563; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;"
-              @click=${()=>this.editEntry(n)}
-              title="Edit Entry"
-            >
-              ✏️ Edit
-            </button>
-            <button
-              style="border-radius: 999px; border: 1px solid #fee2e2; background: #fef2f2; padding: 6px 10px; font-size: 11px; color: #dc2626; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;"
-              @click=${()=>this.deleteEntry(n.id)}
-              title="Delete Entry"
-            >
-              🗑️ Delete
-            </button>
-          </div>
-        </div>
-
-        <div class="log-body">
-          ${n.exercises.map(t=>{const s=t.completionStatus==="complete"?100:t.completionStatus==="partial"?50:0,i=t.completionStatus==="complete"?"#16a34a":t.completionStatus==="partial"?"#eab308":"#ef4444",r=t.difficulty==="Easy"?"#22c55e":t.difficulty==="Moderate"?"#eab308":t.difficulty==="Hard"?"#f97316":"#ef4444";return d`
-              <div
-                style="border-radius: 16px; padding: 10px 12px; margin-bottom: 8px; background: #ffffff; border: 1px solid #e5e7eb;"
-              >
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                  <div style="flex: 1;">
-                    <div style="font-size: 12px; font-weight: 600; color: #111827;">
-                      ${t.name}
-                    </div>
-                    <div style="font-size: 11px; color: #6b7280; margin-top: 2px;">
-                      ${t.category} • ${t.reps} reps${t.weight?` • ${t.weight}`:""}
-                    </div>
-                  </div>
-                  <div style="display: flex; gap: 6px; align-items: center;">
-                    <div
-                      style="font-size: 10px; padding: 4px 8px; border-radius: 999px; background: ${i}20; color: ${i}; font-weight: 500;"
-                    >
-                      ${t.completionStatus}
-                    </div>
-                    <div
-                      style="font-size: 10px; padding: 4px 8px; border-radius: 999px; background: ${r}20; color: ${r}; font-weight: 500;"
-                    >
-                      ${t.difficulty}
-                    </div>
-                  </div>
-                </div>
-                ${this.renderProgressBar(s)}
-              </div>
-            `})}
-          ${n.notes?d`<div class="log-notes">${n.notes}</div>`:null}
-        </div>
-      </section>
-    `}render(){var n;return d`
-      <section class="card-gradient">
-        <div class="banner-left">
-          <div class="banner-icon">📗</div>
+    `}renderLogEntry(n){return l`
+      <article class="log-card">
+        <header class="log-card-header">
           <div>
-            <div class="banner-text-title">Exercise Log</div>
-            <div class="banner-text-sub">
-              Track your completed workouts.
+            <div class="log-date">${n.dateLabel}</div>
+            <div class="log-subtitle">
+              <span class="log-pill">${n.durationMinutes} min</span>
+              <span class="log-pill log-pill-progress">
+                ${n.completionPercent}% complete
+              </span>
             </div>
           </div>
-        </div>
+          <div class="log-actions">
+            <button
+              class="icon-btn"
+              @click=${()=>this.editEntry(n)}
+              aria-label="Edit log entry"
+            >
+              ✏️
+            </button>
+            <button
+              class="icon-btn icon-btn-danger"
+              @click=${()=>this.deleteEntry(n.id)}
+              aria-label="Delete log entry"
+            >
+              🗑
+            </button>
+          </div>
+        </header>
 
-        ${this.showNewEntry?d`
-              <button
-                class="banner-actions-btn cancel"
-                type="button"
-                @click=${this.cancelNewEntry}
-              >
-                Cancel
-              </button>
-            `:d`
-              <button
-                class="banner-actions-btn add"
-                type="button"
-                @click=${this.openNewEntry}
-              >
-                <span>+</span>
-                <span>Add Entry</span>
-              </button>
-            `}
-      </section>
+        <section class="log-body">
+          ${n.exercises.length>0?l`
+                <div class="log-exercises">
+                  ${n.exercises.map(e=>this.renderExerciseRow(e))}
+                </div>
+              `:l`<div class="log-empty">No exercises recorded for this entry.</div>`}
+        </section>
 
-      <!-- Summary -->
-      <section class="card-white">
-        <div class="summary-row">
-          ${this.renderSummaryCard("Total Entries",this.totalEntries,"📅")}
-          ${this.renderSummaryCard("Completed Today",this.completedToday,"✅")}
-          ${this.renderSummaryCard("This Week",this.thisWeek,"📈")}
-        </div>
-      </section>
+        ${n.notes?l`
+              <section class="log-notes">
+                <div class="log-notes-label">Workout Notes</div>
+                <p class="log-notes-text">${n.notes}</p>
+              </section>
+            `:null}
+      </article>
+    `}renderNewEntryForm(){const n=this.todayExercises.length>0;return l`
+      <section class="new-entry-card">
+        <div class="new-entry-inner">
+          <div class="new-entry-header">
+            <div>
+              <div class="new-entry-title">
+                ${this.editingEntryId?"✏️ Edit Log Entry":"+ New Log Entry"}
+              </div>
+              <div class="new-entry-sub">
+                <input
+                  type="date"
+                  class="date-input"
+                  .value=${this.selectedDateIso}
+                  @change=${this.onDateChange}
+                />
+              </div>
+            </div>
+            <button class="cancel-btn" @click=${this.cancelNewEntry}>Cancel</button>
+          </div>
 
-      ${this.showNewEntry?d`
-            <section class="new-entry-card">
-              <div class="new-entry-inner">
-                <div class="new-entry-header">
-                  <div>
-                    <div class="new-entry-title">
-                      ${this.editingEntryId?"✏️ Edit Log Entry":"+ New Log Entry"}
-                    </div>
-                    <div class="new-entry-sub">
-                      ${this.editingEntryId&&((n=this.logEntries.find(e=>e.id===this.editingEntryId))==null?void 0:n.dateLabel)||V()}
-                    </div>
+          ${n?null:l`
+                <div class="no-exercises-banner">
+                  <div class="no-exercises-title">No exercises planned for today.</div>
+                  <div class="no-exercises-text">
+                    Add exercises in the Planner tab first. Once you plan your workout,
+                    they will appear here for tracking.
+                  </div>
+                  <div class="no-exercises-actions">
+                    <button
+                      class="outline-btn"
+                      @click=${()=>{var t;const e=document.querySelector("planner-page");e&&((t=e.navigateToPlanner)==null||t.call(e))}}
+                    >
+                      Go to Planner
+                    </button>
+                    <button class="outline-btn" @click=${()=>this.openNewEntry()}>
+                      Refresh From Planner
+                    </button>
                   </div>
                 </div>
+              `}
 
-                <form @submit=${this.saveEntry}>
-                  ${this.todayExercises.length>0?d`
-                        <div style="margin-top: 16px;">
-                          <div class="section-title" style="margin-bottom: 12px;">
-                            Planned Exercises for Today
-                          </div>
-                          ${this.todayExercises.map(e=>d`
-                              <div
-                                style="border-radius: 18px; padding: 12px; margin-bottom: 10px; background: #f9fafb; border: 1px solid #e5e7eb;"
-                              >
-                                <div style="margin-bottom: 8px;">
-                                  <div style="font-size: 12px; font-weight: 600; color: #111827;">
-                                    ${e.name}
-                                  </div>
-                                  <div style="font-size: 11px; color: #6b7280; margin-top: 2px;">
-                                    ${e.muscleGroup} • ${e.sets} sets × ${e.reps} reps${e.weight?` • ${e.weight}`:""}
-                                  </div>
-                                </div>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                                  <div>
-                                    <label class="field-label" style="font-size: 10px; margin-bottom: 4px;">
-                                      Completion
-                                    </label>
-                                    <select
-                                      class="select-input"
-                                      style="width: 100%; border-radius: 12px; padding: 6px 10px; font-size: 11px; border: 1px solid #d1d5db; background: #ffffff;"
-                                      .value=${this.exerciseCompletions[e.id]||"incomplete"}
-                                      @change=${t=>this.onExerciseCompletionChange(e.id,t)}
-                                    >
-                                      <option value="incomplete">Incomplete</option>
-                                      <option value="partial">Partial</option>
-                                      <option value="complete">Complete</option>
-                                    </select>
-                                  </div>
-                                  <div>
-                                    <label class="field-label" style="font-size: 10px; margin-bottom: 4px;">
-                                      Difficulty
-                                    </label>
-                                    <select
-                                      class="select-input"
-                                      style="width: 100%; border-radius: 12px; padding: 6px 10px; font-size: 11px; border: 1px solid #d1d5db; background: #ffffff;"
-                                      .value=${this.exerciseDifficulties[e.id]||"Moderate"}
-                                      @change=${t=>this.onExerciseDifficultyChange(e.id,t)}
-                                    >
-                                      <option value="Easy">Easy</option>
-                                      <option value="Moderate">Moderate</option>
-                                      <option value="Hard">Hard</option>
-                                      <option value="Very Hard">Very Hard</option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-                            `)}
-                        </div>
-                      `:d`
-                        <div
-                          style="text-align: center; padding: 24px; color: #6b7280; font-size: 12px;"
-                        >
-                          No exercises planned for today. Add exercises in the Planner tab first.
-                        </div>
-                      `}
+          <form @submit=${this.saveEntry}>
+            <div class="form-grid">
+              <div class="form-section">
+                <h3 class="section-title">Workout Details</h3>
 
-                  <div style="margin-top: 16px;">
+                <div class="field-group-inline">
+                  <div class="field">
                     <label class="field-label">Workout Duration (minutes)</label>
                     <input
                       type="number"
-                      class="input-number"
-                      style="width: 100%; border-radius: 18px; padding: 8px 12px; font-size: 12px;"
+                      class="duration-input"
                       min="0"
                       .value=${this.workoutDuration}
                       @input=${this.onDurationInput}
                       placeholder="e.g., 45"
                     />
                   </div>
+                </div>
 
-                  <div style="margin-top: 12px;">
-                    <label class="field-label">Workout Notes</label>
-                    <textarea
-                      class="notes-input"
-                      .value=${this.newNotes}
-                      @input=${this.onNotesInput}
-                      placeholder="How did your workout go? Any achievements or challenges?"
-                    ></textarea>
-                  </div>
-
-                  <button type="submit" class="save-btn">Save Entry</button>
-                </form>
+                <div style="margin-top: 12px;">
+                  <label class="field-label">Workout Notes</label>
+                  <textarea
+                    class="notes-input"
+                    .value=${this.newNotes}
+                    @input=${this.onNotesInput}
+                    placeholder="How did your workout go? Any achievements or challenges?"
+                  ></textarea>
+                </div>
               </div>
-            </section>
-          `:null}
 
-      ${this.filteredEntries.length>0?this.filteredEntries.map(e=>this.renderLogEntry(e)):null}
-    `}};x.styles=M(L);$([c()],x.prototype,"logEntries",2);$([c()],x.prototype,"showNewEntry",2);$([c()],x.prototype,"editingEntryId",2);$([c()],x.prototype,"newNotes",2);$([c()],x.prototype,"todayExercises",2);$([c()],x.prototype,"exerciseCompletions",2);$([c()],x.prototype,"exerciseDifficulties",2);$([c()],x.prototype,"workoutDuration",2);x=$([O("exercise-log-page")],x);var nt=Object.defineProperty,it=Object.getOwnPropertyDescriptor,Y=(n,e,t,s)=>{for(var i=s>1?void 0:s?it(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&nt(e,t,i),i};let z=class extends y{constructor(){super(...arguments),this.diaryEntries=[...Je],this.newMood="Good",this.newDiaryText="",this.showNewEntryForm=!1}get totalEntries(){return this.diaryEntries.length}get greatDays(){return this.diaryEntries.filter(n=>n.mood==="Great").length}get thisWeek(){return this.diaryEntries.length}setMood(n){this.newMood=n}onDiaryInput(n){this.newDiaryText=n.target.value}startNewEntry(){this.showNewEntryForm=!0,this.newMood="Good",this.newDiaryText=""}cancelNewEntry(){this.showNewEntryForm=!1,this.newMood="Good",this.newDiaryText=""}saveDiary(n){if(n.preventDefault(),!this.newDiaryText.trim())return;const e=new Date().toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"}),t={id:Date.now(),dateLabel:e,mood:this.newMood,text:this.newDiaryText.trim()};this.diaryEntries=[t,...this.diaryEntries],this.cancelNewEntry()}render(){const n=new Date().toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"});return d`
+              <div class="form-section">
+                <h3 class="section-title">Exercises From Planner</h3>
+
+                ${n?l`
+                      <div class="exercise-list">
+                        ${this.todayExercises.map(e=>l`
+                            <div class="exercise-row">
+                              <div class="exercise-main">
+                                <div class="exercise-name">${e.name}</div>
+                                <div class="exercise-meta">
+                                  <span class="log-pill">${e.muscleGroup}</span>
+                                  <span class="log-pill"
+                                    >${e.reps||0} reps planned</span
+                                  >
+                                </div>
+                              </div>
+
+                              <div class="exercise-controls">
+                                <div class="field">
+                                  <label class="field-label-small">Completion</label>
+                                  <select
+                                    class="select-input"
+                                    .value=${this.exerciseCompletions[e.id]||"incomplete"}
+                                    @change=${t=>this.onExerciseCompletionChange(e.id,t)}
+                                  >
+                                    <option value="incomplete">Not done</option>
+                                    <option value="partial">Partially</option>
+                                    <option value="complete">Completed</option>
+                                  </select>
+                                </div>
+
+                                <div class="field">
+                                  <label class="field-label-small">Difficulty</label>
+                                  <select
+                                    class="select-input"
+                                    .value=${this.exerciseDifficulties[e.id]||"Moderate"}
+                                    @change=${t=>this.onExerciseDifficultyChange(e.id,t)}
+                                  >
+                                    <option value="Easy">Easy</option>
+                                    <option value="Moderate">Moderate</option>
+                                    <option value="Hard">Hard</option>
+                                    <option value="Very Hard">Very hard</option>
+                                  </select>
+                                </div>
+
+                                <div class="field small-field">
+                                  <label class="field-label-small">Reps</label>
+                                  <input
+                                    type="number"
+                                    class="small-input"
+                                    min="0"
+                                    .value=${String(e.reps||0)}
+                                    @input=${t=>this.onExerciseRepsChange(e.id,t)}
+                                  />
+                                </div>
+
+                                <div class="field small-field">
+                                  <label class="field-label-small">Weight</label>
+                                  <input
+                                    type="text"
+                                    class="small-input"
+                                    .value=${e.weight||""}
+                                    @input=${t=>this.onExerciseWeightChange(e.id,t)}
+                                    placeholder="e.g., 25 lb"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          `)}
+                      </div>
+                    `:l`
+                      <div class="empty-state">
+                        <div class="empty-icon">📝</div>
+                        <div class="empty-title">No exercises loaded</div>
+                        <div class="empty-text">
+                          Plan your workout in the Planner tab and then refresh this
+                          list.
+                        </div>
+                      </div>
+                    `}
+              </div>
+            </div>
+
+            <div class="form-footer">
+              <button type="submit" class="save-btn">Save Entry</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    `}render(){return l`
+      <main class="page">
+        <header class="header">
+          <div class="header-inner">
+            <div class="header-icon">🏋️‍♂️</div>
+            <div>
+              <h1 class="header-title">Exercise Log</h1>
+              <p class="header-subtitle">Track your completed workouts.</p>
+            </div>
+            <button class="cancel-chip" @click=${()=>history.back()}>Cancel</button>
+          </div>
+        </header>
+
+        <section class="summary-section">
+          <div class="summary-inner">
+            ${this.renderSummaryCard("Total Entries",this.totalEntries,"📅")}
+            ${this.renderSummaryCard("Completed Today",this.completedToday,"✅")}
+            ${this.renderSummaryCard("This Week",this.thisWeekEntries,"📈")}
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="content-inner">
+            <div class="new-entry-bar">
+              <div>
+                <div class="new-entry-label">+ New Log Entry</div>
+                <div class="new-entry-hint">
+                  Create a new workout log using exercises from your Planner.
+                </div>
+              </div>
+              <button class="primary-chip" @click=${this.openNewEntry}>
+                Add Entry
+              </button>
+            </div>
+
+            ${this.showNewEntry?this.renderNewEntryForm():null}
+
+            ${this.filteredEntries.length>0?l`
+                  <div class="log-list">
+                    <h2 class="log-list-title">Past Entries</h2>
+                    ${this.filteredEntries.map(n=>this.renderLogEntry(n))}
+                  </div>
+                `:l`
+                  <div class="empty-state large">
+                    <div class="empty-icon">📘</div>
+                    <div class="empty-title">No workout logs yet</div>
+                    <div class="empty-text">
+                      Once you start completing workouts, your history will appear
+                      here.
+                    </div>
+                  </div>
+                `}
+          </div>
+        </section>
+      </main>
+    `}};b.styles=N(L);w([c()],b.prototype,"logEntries",2);w([c()],b.prototype,"showNewEntry",2);w([c()],b.prototype,"editingEntryId",2);w([c()],b.prototype,"newNotes",2);w([c()],b.prototype,"todayExercises",2);w([c()],b.prototype,"exerciseCompletions",2);w([c()],b.prototype,"exerciseDifficulties",2);w([c()],b.prototype,"workoutDuration",2);w([c()],b.prototype,"selectedDateIso",2);b=w([O("exercise-log-page")],b);var st=Object.defineProperty,rt=Object.getOwnPropertyDescriptor,Y=(n,e,t,s)=>{for(var i=s>1?void 0:s?rt(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&st(e,t,i),i};let M=class extends y{constructor(){super(...arguments),this.diaryEntries=[...Xe],this.newMood="Good",this.newDiaryText="",this.showNewEntryForm=!1}get totalEntries(){return this.diaryEntries.length}get greatDays(){return this.diaryEntries.filter(n=>n.mood==="Great").length}get thisWeek(){return this.diaryEntries.length}setMood(n){this.newMood=n}onDiaryInput(n){this.newDiaryText=n.target.value}startNewEntry(){this.showNewEntryForm=!0,this.newMood="Good",this.newDiaryText=""}cancelNewEntry(){this.showNewEntryForm=!1,this.newMood="Good",this.newDiaryText=""}saveDiary(n){if(n.preventDefault(),!this.newDiaryText.trim())return;const e=new Date().toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"}),t={id:Date.now(),dateLabel:e,mood:this.newMood,text:this.newDiaryText.trim()};this.diaryEntries=[t,...this.diaryEntries],this.cancelNewEntry()}render(){const n=new Date().toLocaleDateString(void 0,{weekday:"long",month:"long",day:"numeric",year:"numeric"});return l`
       <section class="card-gradient">
         <div>
           <div class="card-gradient-main-title">Diary</div>
@@ -1732,7 +1796,7 @@ html {
         </div>
       </section>
 
-      ${this.showNewEntryForm?d`
+      ${this.showNewEntryForm?l`
             <section class="section">
               <div class="new-entry-header">
                 <div style="display:flex;align-items:center;gap:8px;">
@@ -1778,7 +1842,7 @@ html {
           `:null}
 
       ${this.diaryEntries.map(e=>this.renderDiaryEntry(e))}
-    `}renderStatChip(n,e,t){return d`
+    `}renderStatChip(n,e,t){return l`
       <div class="stat-chip">
         <div class="stat-icon">${t}</div>
         <div>
@@ -1786,7 +1850,7 @@ html {
           <div class="stat-value">${e}</div>
         </div>
       </div>
-    `}renderMoodButton(n,e){const t=this.newMood===n;return d`
+    `}renderMoodButton(n,e){const t=this.newMood===n;return l`
       <button
         type="button"
         class=${`mood-btn ${t?"active":""}`}
@@ -1795,7 +1859,7 @@ html {
         <div class="mood-emoji">${e}</div>
         <div>${n}</div>
       </button>
-    `}renderDiaryEntry(n){const e=n.mood==="Great"?"😄":n.mood==="Good"?"🙂":n.mood==="Okay"?"😐":"😵‍💫";return d`
+    `}renderDiaryEntry(n){const e=n.mood==="Great"?"😄":n.mood==="Good"?"🙂":n.mood==="Okay"?"😐":"😵‍💫";return l`
       <section class="diary-entry-card">
         <div class="diary-entry-header">
           <div style="display:flex;align-items:center;gap:8px;">
@@ -1806,7 +1870,7 @@ html {
         </div>
         <div class="diary-entry-text">${n.text}</div>
       </section>
-    `}};z.styles=M(L);Y([c()],z.prototype,"diaryEntries",2);Y([c()],z.prototype,"newMood",2);Y([c()],z.prototype,"newDiaryText",2);Y([c()],z.prototype,"showNewEntryForm",2);z=Y([O("diary-page")],z);var st=Object.defineProperty,rt=Object.getOwnPropertyDescriptor,m=(n,e,t,s)=>{for(var i=s>1?void 0:s?rt(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&st(e,t,i),i};let f=class extends y{constructor(){super(...arguments),this.unit="imperial",this.weightLbs="",this.heightFeet="",this.heightInches="",this.weightKg="",this.heightCm="",this.bmiValue=null,this.bmiCategory=null,this.bmiMessage=null,this.healthyRange=null}setUnit(n){this.unit=n,this.bmiValue=null,this.bmiCategory=null,this.bmiMessage=null,this.healthyRange=null}onSubmit(n){if(n.preventDefault(),this.unit==="imperial"){const e=parseFloat(this.weightLbs),t=parseFloat(this.heightFeet),s=parseFloat(this.heightInches||"0"),i=t*12+s;if(!e||!i)return;const r=703*e/(i*i),{category:a,message:l}=this.categorizeBmi(r),o=18.5*i*i/703,p=24.9*i*i/703;this.bmiValue=parseFloat(r.toFixed(1)),this.bmiCategory=a,this.bmiMessage=l,this.healthyRange=`${Math.round(o)} – ${Math.round(p)} lbs (BMI 18.5–24.9)`}else{const e=parseFloat(this.weightKg),t=parseFloat(this.heightCm);if(!e||!t)return;const s=t/100,i=e/(s*s),{category:r,message:a}=this.categorizeBmi(i),l=18.5*s*s,o=24.9*s*s;this.bmiValue=parseFloat(i.toFixed(1)),this.bmiCategory=r,this.bmiMessage=a,this.healthyRange=`${Math.round(l)} – ${Math.round(o)} kg (BMI 18.5–24.9)`}}categorizeBmi(n){return n<18.5?{category:"Underweight",message:"You are below the recommended range for your height."}:n<25?{category:"Healthy range",message:"Nice! Your BMI is in the generally recommended range."}:n<30?{category:"Overweight",message:"Slightly above the recommended range. Small, steady changes can help."}:{category:"Obese",message:"Above the recommended range. Consider discussing goals with a healthcare professional."}}get resultTagClass(){return this.bmiValue==null?"bmi-result-tag bmi-result-tag--info":this.bmiValue<18.5||this.bmiValue>=30?"bmi-result-tag bmi-result-tag--warning":this.bmiValue>=25?"bmi-result-tag bmi-result-tag--info":"bmi-result-tag bmi-result-tag--normal"}render(){const n=this.bmiValue!=null?this.bmiValue.toFixed(1):"--";return d`
+    `}};M.styles=N(L);Y([c()],M.prototype,"diaryEntries",2);Y([c()],M.prototype,"newMood",2);Y([c()],M.prototype,"newDiaryText",2);Y([c()],M.prototype,"showNewEntryForm",2);M=Y([O("diary-page")],M);var at=Object.defineProperty,ot=Object.getOwnPropertyDescriptor,x=(n,e,t,s)=>{for(var i=s>1?void 0:s?ot(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&at(e,t,i),i};let f=class extends y{constructor(){super(...arguments),this.unit="imperial",this.weightLbs="",this.heightFeet="",this.heightInches="",this.weightKg="",this.heightCm="",this.bmiValue=null,this.bmiCategory=null,this.bmiMessage=null,this.healthyRange=null}setUnit(n){this.unit=n,this.bmiValue=null,this.bmiCategory=null,this.bmiMessage=null,this.healthyRange=null}onSubmit(n){if(n.preventDefault(),this.unit==="imperial"){const e=parseFloat(this.weightLbs),t=parseFloat(this.heightFeet),s=parseFloat(this.heightInches||"0"),i=t*12+s;if(!e||!i)return;const r=703*e/(i*i),{category:a,message:d}=this.categorizeBmi(r),o=18.5*i*i/703,p=24.9*i*i/703;this.bmiValue=parseFloat(r.toFixed(1)),this.bmiCategory=a,this.bmiMessage=d,this.healthyRange=`${Math.round(o)} – ${Math.round(p)} lbs (BMI 18.5–24.9)`}else{const e=parseFloat(this.weightKg),t=parseFloat(this.heightCm);if(!e||!t)return;const s=t/100,i=e/(s*s),{category:r,message:a}=this.categorizeBmi(i),d=18.5*s*s,o=24.9*s*s;this.bmiValue=parseFloat(i.toFixed(1)),this.bmiCategory=r,this.bmiMessage=a,this.healthyRange=`${Math.round(d)} – ${Math.round(o)} kg (BMI 18.5–24.9)`}}categorizeBmi(n){return n<18.5?{category:"Underweight",message:"You are below the recommended range for your height."}:n<25?{category:"Healthy range",message:"Nice! Your BMI is in the generally recommended range."}:n<30?{category:"Overweight",message:"Slightly above the recommended range. Small, steady changes can help."}:{category:"Obese",message:"Above the recommended range. Consider discussing goals with a healthcare professional."}}get resultTagClass(){return this.bmiValue==null?"bmi-result-tag bmi-result-tag--info":this.bmiValue<18.5||this.bmiValue>=30?"bmi-result-tag bmi-result-tag--warning":this.bmiValue>=25?"bmi-result-tag bmi-result-tag--info":"bmi-result-tag bmi-result-tag--normal"}render(){const n=this.bmiValue!=null?this.bmiValue.toFixed(1):"--";return l`
       <!-- Hero / banner -->
       <section class="card-gradient">
         <div class="banner-left">
@@ -1882,7 +1946,7 @@ html {
             </button>
           </div>
 
-          ${this.unit==="imperial"?d`
+          ${this.unit==="imperial"?l`
                 <div class="bmi-form-grid bmi-form-grid--row">
                   <div>
                     <label class="bmi-label">Weight (lbs)</label>
@@ -1917,7 +1981,7 @@ html {
                     </div>
                   </div>
                 </div>
-              `:d`
+              `:l`
                 <div class="bmi-form-grid bmi-form-grid--row">
                   <div>
                     <label class="bmi-label">Weight (kg)</label>
@@ -1948,7 +2012,7 @@ html {
       </section>
 
       <!-- Result details -->
-      ${this.bmiValue!=null?d`
+      ${this.bmiValue!=null?l`
             <section class="section">
               <div
                 style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:8px;"
@@ -1971,7 +2035,7 @@ html {
                 <strong>${this.bmiValue.toFixed(1)}</strong>. ${this.bmiMessage}
               </div>
 
-              ${this.healthyRange?d`
+              ${this.healthyRange?l`
                     <div class="bmi-tip">
                       For your height, a typical “healthy” BMI range (18.5–24.9)
                       corresponds to roughly
@@ -1980,14 +2044,14 @@ html {
                   `:null}
             </section>
           `:null}
-    `}};f.styles=M(L);m([c()],f.prototype,"unit",2);m([c()],f.prototype,"weightLbs",2);m([c()],f.prototype,"heightFeet",2);m([c()],f.prototype,"heightInches",2);m([c()],f.prototype,"weightKg",2);m([c()],f.prototype,"heightCm",2);m([c()],f.prototype,"bmiValue",2);m([c()],f.prototype,"bmiCategory",2);m([c()],f.prototype,"bmiMessage",2);m([c()],f.prototype,"healthyRange",2);f=m([O("bmi-calculator-page")],f);var at=Object.defineProperty,ot=Object.getOwnPropertyDescriptor,Ae=(n,e,t,s)=>{for(var i=s>1?void 0:s?ot(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&at(e,t,i),i};let X=class extends y{constructor(){super(...arguments),this.activeTab="planner"}setTab(n){this.activeTab=n}renderTab(n,e){const t=this.activeTab===n;return d`
+    `}};f.styles=N(L);x([c()],f.prototype,"unit",2);x([c()],f.prototype,"weightLbs",2);x([c()],f.prototype,"heightFeet",2);x([c()],f.prototype,"heightInches",2);x([c()],f.prototype,"weightKg",2);x([c()],f.prototype,"heightCm",2);x([c()],f.prototype,"bmiValue",2);x([c()],f.prototype,"bmiCategory",2);x([c()],f.prototype,"bmiMessage",2);x([c()],f.prototype,"healthyRange",2);f=x([O("bmi-calculator-page")],f);var lt=Object.defineProperty,dt=Object.getOwnPropertyDescriptor,ke=(n,e,t,s)=>{for(var i=s>1?void 0:s?dt(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&lt(e,t,i),i};let J=class extends y{constructor(){super(...arguments),this.activeTab="planner"}setTab(n){this.activeTab=n}renderTab(n,e){const t=this.activeTab===n;return l`
       <button
         class=${`tab ${t?"active":""}`}
         @click=${()=>this.setTab(n)}
       >
         ${e}
       </button>
-    `}render(){return d`
+    `}render(){return l`
       <header>
         <div class="header-inner">
           <div class="brand">
@@ -2012,6 +2076,6 @@ html {
       </header>
 
       <div class="page">
-        ${this.activeTab==="planner"?d`<planner-page></planner-page>`:this.activeTab==="log"?d`<exercise-log-page></exercise-log-page>`:this.activeTab==="diary"?d`<diary-page></diary-page>`:d`<bmi-calculator-page></bmi-calculator-page>`}
+        ${this.activeTab==="planner"?l`<planner-page></planner-page>`:this.activeTab==="log"?l`<exercise-log-page></exercise-log-page>`:this.activeTab==="diary"?l`<diary-page></diary-page>`:l`<bmi-calculator-page></bmi-calculator-page>`}
       </div>
-    `}};X.styles=M(L);Ae([c()],X.prototype,"activeTab",2);X=Ae([O("planner-fit-app")],X);var dt=Object.defineProperty,lt=Object.getOwnPropertyDescriptor,ke=(n,e,t,s)=>{for(var i=s>1?void 0:s?lt(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&dt(e,t,i),i};let Z=class extends y{constructor(){super(...arguments),this.name="Lit App"}render(){return d`<h1>Hello, ${this.name}</h1>`}};Z.styles=[M(L)];ke([_e()],Z.prototype,"name",2);Z=ke([O("lit-app")],Z);
+    `}};J.styles=N(L);ke([c()],J.prototype,"activeTab",2);J=ke([O("planner-fit-app")],J);var ct=Object.defineProperty,pt=Object.getOwnPropertyDescriptor,De=(n,e,t,s)=>{for(var i=s>1?void 0:s?pt(e,t):e,r=n.length-1,a;r>=0;r--)(a=n[r])&&(i=(s?a(e,t,i):a(i))||i);return s&&i&&ct(e,t,i),i};let X=class extends y{constructor(){super(...arguments),this.name="Lit App"}render(){return l`<h1>Hello, ${this.name}</h1>`}};X.styles=[N(L)];De([_e()],X.prototype,"name",2);X=De([O("lit-app")],X);
