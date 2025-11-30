@@ -1,4 +1,3 @@
-// src/models.ts
 export type Mood = 'Great' | 'Good' | 'Okay' | 'Tough';
 
 export interface PlannerExercise {
@@ -7,11 +6,12 @@ export interface PlannerExercise {
   name: string;
   sets: number;
   reps: number;
+  weight: string;
   muscleGroup: string;
 }
 
 export interface PlannerDay {
-  id: string;   // "Mon"
+  id: string;
   label: string;
   exercises: PlannerExercise[];
 }
@@ -28,8 +28,8 @@ export const DAYS: PlannerDay[] = [
     id: 'Mon',
     label: 'Monday',
     exercises: [
-      { id: 1, order: 1, name: 'Bench Press', sets: 4, reps: 10, muscleGroup: 'Chest' },
-      { id: 2, order: 2, name: 'Push-ups',   sets: 3, reps: 15, muscleGroup: 'Chest' },
+      { id: 1, order: 1, name: 'Bench Press', sets: 4, reps: 10, weight: '135 lbs', muscleGroup: 'Chest' },
+      { id: 2, order: 2, name: 'Push-ups',   sets: 3, reps: 15, weight: '', muscleGroup: 'Chest' },
     ],
   },
   { id: 'Tue', label: 'Tuesday',   exercises: [] },
