@@ -4,9 +4,10 @@ import { customElement, state } from 'lit/decorators.js';
 import './planner-page';
 import './exercise-log-page';
 import './diary-page';
+import './bmi-calculator-page';
 import globalStyles from './global.css?raw';
 
-type TabId = 'planner' | 'log' | 'diary';
+type TabId = 'planner' | 'log' | 'diary' | 'bmi';
 
 @customElement('planner-fit-app')
 export class PlannerFitApp extends LitElement {
@@ -49,6 +50,7 @@ export class PlannerFitApp extends LitElement {
               ${this.renderTab('planner', 'Planner')}
               ${this.renderTab('log', 'Exercise Log')}
               ${this.renderTab('diary', 'Diary')}
+              ${this.renderTab('bmi', 'BMI Calculator')} <!-- 👈 NEW TAB -->
             </div>
           </div>
         </div>
@@ -59,7 +61,9 @@ export class PlannerFitApp extends LitElement {
           ? html`<planner-page></planner-page>`
           : this.activeTab === 'log'
           ? html`<exercise-log-page></exercise-log-page>`
-          : html`<diary-page></diary-page>`}
+          : this.activeTab === 'diary'
+          ? html`<diary-page></diary-page>`
+          : html`<bmi-calculator-page></bmi-calculator-page>`}
       </div>
     `;
   }
