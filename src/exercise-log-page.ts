@@ -3,6 +3,7 @@ import { customElement, state } from 'lit/decorators.js';
 import { PlannerExercise, PlannerDay } from './models';
 import { plannerState } from './shared-state';
 import globalStyles from './global.css?raw';
+import { PlannerPage } from './planner-page'; // Imported for type safety if needed, though often used via querySelector
 
 type CompletionStatus = 'incomplete' | 'partial' | 'complete';
 type Difficulty = 'Easy' | 'Moderate' | 'Hard' | 'Very Hard';
@@ -41,6 +42,20 @@ function getDayOfWeek(): string {
   return days[dayIndex];
 }
 
+// 👇 NEW HELPER FUNCTION: Formats YYYY-MM-DD back to "Wednesday, November..."
+function formatDateToLabel(isoDate: string): string {
+  if (!isoDate) return todayLabel();
+  // Create date using split to avoid timezone shifts
+  const [y, m, d] = isoDate.split('-').map(Number);
+  const date = new Date(y, m - 1, d); 
+  return date.toLocaleDateString(undefined, {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
 const INITIAL_ENTRIES: LogEntry[] = [
   {
     id: 1,
@@ -77,6 +92,9 @@ export class ExerciseLogPage extends LitElement {
   @state() private exerciseCompletions: Record<number, CompletionStatus> = {};
   @state() private exerciseDifficulties: Record<number, Difficulty> = {};
   @state() private workoutDuration: string = '';
+  
+  // 👇 NEW STATE for the date picker
+  @state() private entryDate = ''; 
 
   static styles = unsafeCSS(globalStyles);
 
@@ -87,6 +105,7 @@ export class ExerciseLogPage extends LitElement {
     if (exercises.length === 0) {
       const plannerPage = document.querySelector('planner-page') as PlannerPage | null;
       if (plannerPage) {
+        // Accessing properties via 'any' to bypass strict type checking on the custom element if needed
         const days = (plannerPage as any).plannerDays || (plannerPage as any).days || [];
         if (days.length > 0) {
           const day = days.find((d: PlannerDay) => d.id === dayId);
@@ -113,6 +132,14 @@ export class ExerciseLogPage extends LitElement {
         }
       }
     }
+    
+    // 👇 NEW: Initialize date to today (YYYY-MM-DD)
+    const now = new Date();
+    this.entryDate = [
+      now.getFullYear(),
+      String(now.getMonth() + 1).padStart(2, '0'),
+      String(now.getDate()).padStart(2, '0')
+    ].join('-');
     
     this.todayExercises = exercises;
     exercises.forEach((ex) => {
@@ -160,6 +187,7 @@ export class ExerciseLogPage extends LitElement {
     this.exerciseCompletions = {};
     this.exerciseDifficulties = {};
     this.workoutDuration = '';
+    this.entryDate = '';
   }
 
   private onNotesInput(e: Event) {
@@ -187,6 +215,18 @@ export class ExerciseLogPage extends LitElement {
     this.showNewEntry = true;
     this.newNotes = entry.notes;
     this.workoutDuration = entry.durationMinutes.toString();
+    
+    // 👇 NEW: Parse the existing label back to YYYY-MM-DD for the picker
+    const d = new Date(entry.dateLabel);
+    if (!isNaN(d.getTime())) {
+      this.entryDate = [
+        d.getFullYear(),
+        String(d.getMonth() + 1).padStart(2, '0'),
+        String(d.getDate()).padStart(2, '0')
+      ].join('-');
+    } else {
+      this.entryDate = new Date().toISOString().split('T')[0];
+    }
     
     this.todayExercises = entry.exercises.map((ex) => ({
       id: ex.id,
@@ -233,6 +273,9 @@ export class ExerciseLogPage extends LitElement {
       exercises,
     });
 
+    // 👇 NEW: Use the picker date logic
+    const finalLabel = formatDateToLabel(this.entryDate);
+
     if (this.editingEntryId) {
       const existingEntry = this.logEntries.find((e) => e.id === this.editingEntryId);
       if (existingEntry) {
@@ -240,6 +283,7 @@ export class ExerciseLogPage extends LitElement {
           ...existingEntry,
           durationMinutes: duration,
           completionPercent,
+          dateLabel: finalLabel, // Updated
           notes: this.newNotes.trim(),
           exercises,
         };
@@ -250,7 +294,7 @@ export class ExerciseLogPage extends LitElement {
     } else {
       const entry: LogEntry = {
         id: Date.now(),
-        dateLabel: todayLabel(),
+        dateLabel: finalLabel, // Updated
         durationMinutes: duration,
         completionPercent,
         notes: this.newNotes.trim(),
@@ -419,7 +463,6 @@ export class ExerciseLogPage extends LitElement {
             `}
       </section>
 
-      <!-- Summary -->
       <section class="card-white">
         <div class="summary-row">
           ${this.renderSummaryCard('Total Entries', this.totalEntries, '📅')}
@@ -437,11 +480,23 @@ export class ExerciseLogPage extends LitElement {
                     <div class="new-entry-title">
                       ${this.editingEntryId ? '✏️ Edit Log Entry' : '+ New Log Entry'}
                     </div>
-                    <div class="new-entry-sub">
-                      ${this.editingEntryId
-                        ? this.logEntries.find((e) => e.id === this.editingEntryId)?.dateLabel ||
-                          todayLabel()
-                        : todayLabel()}
+                    <div class="new-entry-sub" style="margin-top: 6px;">
+                      <input 
+                        type="date"
+                        style="
+                          border: 1px solid #e2e8f0; 
+                          background: #f8fafc; 
+                          border-radius: 8px; 
+                          padding: 6px 10px; 
+                          font-family: inherit; 
+                          font-size: 12px; 
+                          color: #475569;
+                          outline: none;
+                          cursor: pointer;
+                        "
+                        .value=${this.entryDate}
+                        @input=${(e: Event) => this.entryDate = (e.target as HTMLInputElement).value}
+                      />
                     </div>
                   </div>
                 </div>
