@@ -133,7 +133,6 @@ export class ExerciseLogPage extends LitElement {
       }
     }
     
-    // 👇 NEW: Initialize date to today (YYYY-MM-DD)
     const now = new Date();
     this.entryDate = [
       now.getFullYear(),
@@ -216,7 +215,6 @@ export class ExerciseLogPage extends LitElement {
     this.newNotes = entry.notes;
     this.workoutDuration = entry.durationMinutes.toString();
     
-    // 👇 NEW: Parse the existing label back to YYYY-MM-DD for the picker
     const d = new Date(entry.dateLabel);
     if (!isNaN(d.getTime())) {
       this.entryDate = [
@@ -273,7 +271,6 @@ export class ExerciseLogPage extends LitElement {
       exercises,
     });
 
-    // 👇 NEW: Use the picker date logic
     const finalLabel = formatDateToLabel(this.entryDate);
 
     if (this.editingEntryId) {
