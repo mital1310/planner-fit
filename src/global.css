@@ -633,6 +633,28 @@ textarea.notes-input:focus,
   font-weight: 600;
 }
 
+/* Mobile layout for planner day row – match Calorie Tracker behavior */
+@media (max-width: 640px) {
+  .day-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+
+    /* no horizontal scroll; let days wrap instead */
+    overflow-x: visible;
+    padding: 8px 10px 10px;
+  }
+
+  .day-pill {
+    min-width: 0;      /* allow pill to shrink to grid cell */
+    width: 100%;
+    padding: 10px 8px; /* slightly tighter horizontally */
+    white-space: nowrap;
+  }
+}
+
+
 /* Exercise list rows ---------------------------------- */
 
 .exercise-row {
