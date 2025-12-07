@@ -123,10 +123,13 @@ export class BmiCalculatorPage extends LitElement {
 
     return html`
       <!-- Hero / banner -->
-      <section class="card-gradient">
+      <section class="card-gradient bmi-banner">
         <div class="banner-left">
-          <div class="banner-title">BMI Calculator</div>
-          <div class="banner-subtitle">
+          <div class="card-gradient-main-title">BMI Calculator</div>
+        </div>
+
+        <div class="banner-right">
+          <div class="card-gradient-sub">
             Quickly estimate your Body Mass Index and see how it fits into the
             recommended range.
           </div>

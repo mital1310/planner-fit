@@ -7,9 +7,8 @@ import globalStyles from './global.css?raw';
 export class LitApp extends LitElement {
     static styles = [unsafeCSS(globalStyles)];
 
-    @property() name = 'Lit App';
-
-    render() {
-        return html`<h1>Hello, ${this.name}</h1>`;
-    }
+ render() {
+    // Root shell for Plan Fit
+    return html`<planner-fit-app></planner-fit-app>`;
+  }
 }

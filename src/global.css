@@ -79,15 +79,17 @@ header {
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
-  color: #fff;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(79, 70, 229, 0.3);
-  font-size: 20px;
-  font-weight: 700;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   /* maintain proportions */
+  filter: drop-shadow(0 4px 14px rgba(79,70,229,0.4));
 }
 
 .logo:hover {
@@ -1740,6 +1742,47 @@ textarea.notes-input:focus,
 /* =====================================================
  * BMI Calculator block
  * ===================================================== */
+
+ /* BMI banner – match Weekly Workout Plan layout */
+.bmi-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+}
+
+.bmi-banner .banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* right-aligned smaller sentence */
+.bmi-banner .banner-right {
+  margin-left: auto;
+  max-width: 50%;
+  text-align: right;
+}
+
+.bmi-banner .card-gradient-sub {
+  font-size: 13px;
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+/* Mobile: stack like other pages */
+@media (max-width: 640px) {
+  .bmi-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .bmi-banner .banner-right {
+    max-width: 100%;
+    text-align: left;
+  }
+}
 
 .bmi-layout {
   display: flex;

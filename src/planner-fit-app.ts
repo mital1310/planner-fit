@@ -37,10 +37,12 @@ export class PlannerFitApp extends LitElement {
       <header>
         <div class="header-inner">
           <div class="brand">
-            <div class="logo">📘</div>
+            <div class="logo">
+              <img src="images/plan-fit-icon.svg" alt="Plan Fit logo" />
+            </div>
             <div>
-              <div class="brand-text-title">Planner Fit</div>
-              <div class="brand-text-sub">Plan • log • reflect</div>
+              <div class="brand-text-title">Plan Fit</div>
+              <div class="brand-text-sub">Plan • track • reflect</div>
             </div>
           </div>
         </div>

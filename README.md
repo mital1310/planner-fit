@@ -1,7 +1,7 @@
-# 🏋️‍♂️ Planner Fit  
+# 🏋️‍♂️ Plan Fit  
 ### _Plan · Log · Reflect — Your Personal Fitness Companion_
 
-Planner Fit is a **mobile-friendly web app** built using **Lit + Vite** that helps track workouts, exercise logs, fitness diary entries, and calorie tracking — all in one place.
+Plan Fit is a **mobile-friendly web app** built using **Lit + Vite** that helps track workouts, exercise logs, fitness diary entries, and calorie tracking — all in one place.
 
 🔗 **Live Website:** https://mital1310.github.io/planner-fit/  
 📦 **GitHub Repository:** https://github.com/mital1310/planner-fit
