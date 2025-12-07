@@ -7,6 +7,8 @@ import './diary-page';
 import './bmi-calculator-page';
 import './calorie-tracker-page';
 import globalStyles from './global.css?raw';
+import logoUrl from '../images/plan-fit-icon.svg';
+
 
 type TabId = 'planner' | 'log' | 'calories' | 'diary' | 'bmi';
 
@@ -38,7 +40,7 @@ export class PlannerFitApp extends LitElement {
         <div class="header-inner">
           <div class="brand">
             <div class="logo">
-              <img src="images/plan-fit-icon.svg" alt="Plan Fit logo" />
+              <img src=${logoUrl} alt="Plan Fit logo" />
             </div>
             <div>
               <div class="brand-text-title">Plan Fit</div>
