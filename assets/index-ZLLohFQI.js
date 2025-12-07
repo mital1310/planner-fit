@@ -3041,7 +3041,7 @@ html {
           ${this.renderMealCard("snacks")}
         </div>
       </div>
-    `}};f.styles=C(O);y([c()],f.prototype,"weekStart",2);y([c()],f.prototype,"selectedDateKey",2);y([c()],f.prototype,"dailyGoal",2);y([c()],f.prototype,"formMeal",2);y([c()],f.prototype,"formFoodName",2);y([c()],f.prototype,"formAmount",2);y([c()],f.prototype,"formUnit",2);y([c()],f.prototype,"formCaloriesPerServing",2);y([c()],f.prototype,"showQuickAdd",2);y([c()],f.prototype,"mealsByDate",2);y([c()],f.prototype,"lastId",2);f=y([I("calorie-tracker-page")],f);var pn=Object.defineProperty,hn=Object.getOwnPropertyDescriptor,_e=(n,e,t,a)=>{for(var i=a>1?void 0:a?hn(e,t):e,s=n.length-1,r;s>=0;s--)(r=n[s])&&(i=(a?r(e,t,i):r(i))||i);return a&&i&&pn(e,t,i),i};let X=class extends v{constructor(){super(...arguments),this.activeTab="planner"}setTab(n){this.activeTab=n}renderTab(n,e){const t=this.activeTab===n;return d`
+    `}};f.styles=C(O);y([c()],f.prototype,"weekStart",2);y([c()],f.prototype,"selectedDateKey",2);y([c()],f.prototype,"dailyGoal",2);y([c()],f.prototype,"formMeal",2);y([c()],f.prototype,"formFoodName",2);y([c()],f.prototype,"formAmount",2);y([c()],f.prototype,"formUnit",2);y([c()],f.prototype,"formCaloriesPerServing",2);y([c()],f.prototype,"showQuickAdd",2);y([c()],f.prototype,"mealsByDate",2);y([c()],f.prototype,"lastId",2);f=y([I("calorie-tracker-page")],f);const pn="/planner-fit/assets/plan-fit-icon-7CaTcM5z.svg";var hn=Object.defineProperty,un=Object.getOwnPropertyDescriptor,_e=(n,e,t,a)=>{for(var i=a>1?void 0:a?un(e,t):e,s=n.length-1,r;s>=0;s--)(r=n[s])&&(i=(a?r(e,t,i):r(i))||i);return a&&i&&hn(e,t,i),i};let X=class extends v{constructor(){super(...arguments),this.activeTab="planner"}setTab(n){this.activeTab=n}renderTab(n,e){const t=this.activeTab===n;return d`
       <button
         class=${`tab ${t?"active":""}`}
         @click=${()=>this.setTab(n)}
@@ -3053,7 +3053,7 @@ html {
         <div class="header-inner">
           <div class="brand">
             <div class="logo">
-              <img src="images/plan-fit-icon.svg" alt="Plan Fit logo" />
+              <img src=${pn} alt="Plan Fit logo" />
             </div>
             <div>
               <div class="brand-text-title">Plan Fit</div>
@@ -3078,4 +3078,4 @@ html {
       <div class="page">
         ${this.activeTab==="planner"?d`<planner-page></planner-page>`:this.activeTab==="log"?d`<exercise-log-page></exercise-log-page>`:this.activeTab==="calories"?d`<calorie-tracker-page></calorie-tracker-page>`:this.activeTab==="diary"?d`<diary-page></diary-page>`:d`<bmi-calculator-page></bmi-calculator-page>`}
       </div>
-    `}};X.styles=C(O);_e([c()],X.prototype,"activeTab",2);X=_e([I("planner-fit-app")],X);var un=Object.getOwnPropertyDescriptor,gn=(n,e,t,a)=>{for(var i=a>1?void 0:a?un(e,t):e,s=n.length-1,r;s>=0;s--)(r=n[s])&&(i=r(i)||i);return i};let ae=class extends v{render(){return d`<planner-fit-app></planner-fit-app>`}};ae.styles=[C(O)];ae=gn([I("lit-app")],ae);
+    `}};X.styles=C(O);_e([c()],X.prototype,"activeTab",2);X=_e([I("planner-fit-app")],X);var gn=Object.getOwnPropertyDescriptor,fn=(n,e,t,a)=>{for(var i=a>1?void 0:a?gn(e,t):e,s=n.length-1,r;s>=0;s--)(r=n[s])&&(i=r(i)||i);return i};let ae=class extends v{render(){return d`<planner-fit-app></planner-fit-app>`}};ae.styles=[C(O)];ae=fn([I("lit-app")],ae);
